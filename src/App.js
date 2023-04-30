@@ -1,10 +1,19 @@
+//*Routing Pages 
+import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+//*route pages
+import Home from './pages/Home';
+
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <h1>T4T</h1>
-    </div>
+    <Router>
+    <Routes>
+      <Route path="/" element={<Home/>} />
+    </Routes>
+  </Router>
   );
 }
 
