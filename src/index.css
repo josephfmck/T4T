@@ -1,25 +1,29 @@
-/* body {
+/** MAIN CSS FILE */
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
+body {
+  font-family: Avenir, Arial, Helvetica, sans-serif;
+}
 
-/** ACTUAL CODE */
-/* html */
-/* body */
+.container {
+  max-width: 960px;
+  clear: both;
+}
 
+h2 {
+  color: red;
+  font-size: 54px;
+  font-family: Phosphate, Phosphor, 'Times New Roman', Times, serif;
+}
 
-
-/* MOBILE */
-
+h3 {
+  color: red;
+  font-size: 54px;
+  font-family: Phosphate, Phosphor, 'Times New Roman', Times, serif;
+}
 
 
 /** ---> index.js  */

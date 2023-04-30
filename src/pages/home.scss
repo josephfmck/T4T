@@ -1,0 +1,145 @@
+//header#masthead > container > nav >img.logoheader a 
+//section.welcome > img
+//footer > div.push > img 
+
+
+
+//*Header 
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000000;
+  background: white;
+  color: black;
+  border-top: 2px solid red;
+  border-bottom: 2px solid red;
+  width: 100%;
+  overflow: auto;
+  font-family: Phosphate, Phosphor, "Times New Roman", Times, serif;
+  font-size: 20px;
+  text-decoration: none;
+  .container {
+    nav {
+      float: right;
+      color: black;
+      img.logoheader {
+        margin-top: 7px;
+        margin-bottom: 7px;
+        height: 10%;
+        width: 10%;
+      }
+      a {
+        display: inline-block;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-left: 15px;
+        margin-right: 15px;
+        line-height: 18px;
+        color: black;
+      }
+      a.active {
+        background: black;
+        color: white;
+        text-decoration: none;
+        margin-top: -10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      /* hover styling */
+      a:hover {
+        background: black;
+        color: white;
+        text-decoration: none;
+        margin-top: -10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      a.active:hover {
+        color: white;
+        text-decoration: none;
+      }      
+    }
+  }
+}
+
+
+#welcome-section {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.bg-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* footer */
+
+footer {
+  clear: both;
+  font-size: 12px;
+  color: black;
+  line-height: 30px;
+  text-align: center;
+  font-weight: bold;
+  background: white;
+  border-top: 2px solid red;
+  border-bottom: 2px solid red;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.logo {
+  height: 4%;
+  width: 4%;
+}
+
+
+
+
+
+//*HANDLEBARS ETC.
+
+/* items page */
+
+.tools-header {
+  margin-left: 17%;
+}
+
+.list-group-item {
+  margin-top: 80px;
+  margin-left: -105%;
+  margin-right: -150%;
+}
+
+.list-group-item {
+  line-height: 2.5;
+}
+
+
+//*MEDIA QUERIES
+
+@media only screen and (max-width: 500px) {
+  .nav {
+    font-size: 16px;
+  }
+
+  .welcome {
+    height: 700px;
+  }
+}
