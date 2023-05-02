@@ -9,10 +9,33 @@ import "./home.scss";
 function Home() {
   return (
     <>
+      <div id="bg-img">
+        <img src={t4tImg} alt="t4tImg" />
+      </div>
       <header>
-        <div className="container">
-          <nav>
-            <img src={logoImg} className="logoheader" alt="logoheader" />
+        <img src={logoImg} className="logoheader" alt="logoheader" />
+        <button>
+          About Us
+        </button>
+      </header>
+
+      <div className="container">
+        <button>
+          Register
+        </button>
+        <button>
+          Login
+        </button>
+        <button>
+          RENT-A-TOOL
+        </button>
+        <button>
+          LEND-A-TOOL
+        </button>
+      </div>
+
+
+          {/* <nav>
             <a className="active home" href="/">
               HOME
             </a>
@@ -28,16 +51,12 @@ function Home() {
             <a href="/#callDave" className="callDave">
               NEED ADVICE? - CALL DAVE
             </a>
-          </nav>
-        </div>
-      </header>
-      <section id="welcome-section">
-        <img src={t4tImg} className="bg-img" alt="welcome to T4T" />
-      </section>
+          </nav> */}
+
 
       <footer>
         <div className="push">
-          &copy; <img src={logoImg} className="logo" alt="logo" /> 2018. All
+          &copy; <img src={logoImg} className="logo" alt="logo" /> 2023. All
           Rights Reserved.
         </div>
       </footer>
