@@ -6,6 +6,10 @@ import logoImg from "../assets/logo.png";
 //* CSS
 import "./home.scss";
 
+//*bootstrap components 
+import Container  from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+
 function Home() {
   return (
     <>
@@ -19,20 +23,20 @@ function Home() {
         </button>
       </header>
 
-      <div className="container">
-        <button>
+      <Container>
+        <Button>
           Register
-        </button>
-        <button>
+        </Button>
+        <Button>
           Login
-        </button>
-        <button>
+        </Button>
+        <Button>
           RENT-A-TOOL
-        </button>
-        <button>
+        </Button>
+        <Button>
           LEND-A-TOOL
-        </button>
-      </div>
+        </Button>
+      </Container>
 
 
           {/* <nav>
