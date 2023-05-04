@@ -6,8 +6,10 @@ import logoImg from "../assets/logo.png";
 //* CSS
 import "./home.scss";
 
-//*bootstrap components 
-import Container  from "react-bootstrap/Container";
+//*bootstrap components
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
 function Home() {
@@ -18,28 +20,23 @@ function Home() {
       </div>
       <header>
         <img src={logoImg} className="logoheader" alt="logoheader" />
-        <button>
-          About Us
-        </button>
+        <button>About Us</button>
       </header>
 
       <Container>
-        <Button>
-          Register
-        </Button>
-        <Button>
-          Login
-        </Button>
-        <Button>
-          RENT-A-TOOL
-        </Button>
-        <Button>
-          LEND-A-TOOL
-        </Button>
+        <Row>
+          <div className="top-content mt-3 mx-auto">
+            <Button id="registerBtn">Register</Button>
+            <Button id="loginBtn">Login</Button>
+          </div>
+        </Row>
+        {/* <Row>
+        <Button>RENT-A-TOOL</Button>
+        <Button>LEND-A-TOOL</Button>
+        </Row> */}
       </Container>
 
-
-          {/* <nav>
+      {/* <nav>
             <a className="active home" href="/">
               HOME
             </a>
@@ -56,7 +53,6 @@ function Home() {
               NEED ADVICE? - CALL DAVE
             </a>
           </nav> */}
-
 
       <footer>
         <div className="push">

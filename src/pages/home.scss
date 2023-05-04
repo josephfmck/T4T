@@ -66,6 +66,23 @@ header {
   }
 }
 
+.top-content {
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  button {
+    color: #fff;
+    background-color: rgb(255, 38, 0);
+    width: 200px;
+    height: 70px;
+    font-size: 40px;
+    font-family: 'Phosphate';
+    font-weight: bold;
+    border: none;
+  }
+}
+
 // header {
 //   position: sticky;
 //   top: 0;
@@ -116,6 +133,8 @@ header {
 //     }
 //   }
 // }
+
+
 
 
 
