@@ -1,4 +1,6 @@
 import React from "react";
+//*Routing
+import { Link, useNavigate } from "react-router-dom";
 //*images
 import t4tImg from "../assets/T4Twelcome.png";
 import logoImg from "../assets/logo.png";
@@ -20,14 +22,25 @@ function Home() {
       </div>
       <header>
         <img src={logoImg} className="logoheader" alt="logoheader" />
-        <button>About Us</button>
+        <button id="about">About Us</button>
+        <button id="logout"> Logout</button>
       </header>
 
       <Container>
         <Row>
           <div className="top-content mt-3 mx-auto">
-            <Button id="registerBtn">Register</Button>
-            <Button id="loginBtn">Login</Button>
+
+            <Link to="/signup" id="registerBtn" className="">
+              <Button id="signUpBtn">
+                Sign Up
+              </Button>
+            </Link>
+
+            <Link to="/login" id="loginBtn" className="">
+              <Button id="loginBtn">
+                Login
+              </Button>
+            </Link>
           </div>
         </Row>
         {/* <Row>

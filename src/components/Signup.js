@@ -3,6 +3,8 @@ import { Form, Button, Card, Alert } from "react-bootstrap";
 //Firebase Auth Context
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+//*CSS 
+import { Container } from "react-bootstrap";
 
 function Signup() {
   const emailRef = useRef();
@@ -52,7 +54,10 @@ function Signup() {
   }
 
   return (
-    <>
+    <Container 
+    className="d-flex align-items-center justify-content-center"
+    style={{ minHeight: "100vh" }}
+    >
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Signup</h2>
@@ -90,7 +95,7 @@ function Signup() {
       {/* <div className="w-100 text-center mt-2">
         Already have an account? <Link to="/login">Log In</Link>
       </div> */}
-    </>
+    </Container>
   );
 }
 

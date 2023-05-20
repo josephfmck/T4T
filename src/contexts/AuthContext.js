@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { firebaseAuth } from "../firebase";
 
@@ -19,11 +20,17 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
 
+  //!FIREBASE AUTH METHODS
   //*Create and get current user through ASYNC form submission
   //?returns promise
   function signup(email, password) {
-    //!Firebase auth method
     return createUserWithEmailAndPassword(firebaseAuth, email, password);
+  }
+
+  //*Login user through ASYNC form submission
+  //?checks firebase for already signed up user
+  function login(email, password) {
+    return signInWithEmailAndPassword(firebaseAuth, email, password);
   }
 
   useEffect(() => {
@@ -44,6 +51,7 @@ export function AuthProvider({ children }) {
   const authenticationState = {
     currentUser,
     signup,
+    login,
   };
 
   //!RENDER

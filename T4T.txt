@@ -188,3 +188,23 @@ A-3
     .env.local for firebase config 
     make sure package.json has all dependencies and package.lock
 
+    style signup page 
+    implement auth pages: 
+        signup - public DONE 
+        login - public
+        update profile - private
+        forgot password - private
+
+    /components/Login.js
+    update AuthContext with login func
+    update routes 
+
+TEST OUT WITH TEMP EMAIL 
+https://temp-mail.org/en/
+//temporary emails 
+
+signup and login 
+
+//add links to register and login for home page 
+
+//Sign up and Login ROUTES SET 

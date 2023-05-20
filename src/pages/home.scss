@@ -53,7 +53,6 @@ header {
     border-radius: 0px 0px 10px 0px;
   }
   button {
-    margin-left: auto;
     color: rgb(255, 38, 0);
     background-color: #fff;
     border: none;
@@ -63,6 +62,13 @@ header {
     font-family: 'Phosphate';
     font-weight: bold;
     border-radius: 0px 0px 0px 10px;
+  }
+  #about {
+    margin: auto;
+    border-radius: 0px 0px 10px 10px;
+  }
+  #logout {
+    margin-left: auto;
   }
 }
 
