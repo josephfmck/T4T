@@ -1,0 +1,182 @@
+npx create-react-app t4t 
+
+Find it and see what you have 
+recreate it in react 
+
+
+//TERMINAL
+
+//create react project folder
+npx create-react-app react-task-tracker
+//move to directory 
+cd react-task-tracker 
+
+//starts running app script
+npm start 
+
+
+
+
+//npm setup with dependencies
+
+npm init - create package.json
+
+
+npm i react-router-dom - routes 
+npm i sass - css 
+
+
+Backend dependencies
+npm i express - routing 
+npm i cors - whitelist certain locations
+npm i dotenv - use .env file on backend 
+npm i axios - async GET requests 
+
+
+
+
+
+Clean it up first
+    public/ 
+        index.html X
+    src/ 
+        App.js X
+        App.css X
+        index.css X
+        index.js X
+
+
+//from Original:   
+
+html:
+    views/ 
+        /layouts/main.handlebars 
+        index.handlebars
+        404.handlebars
+        items.handlebars
+        lender.handlebars
+        tool.handlebars
+
+
+css: 
+    public/styles.css 
+js: 
+    public/index.js 
+
+    server.js - start point.
+assets:
+    public/images 
+database: 
+    mySQL with Sequelize: 
+        routes/htmlRoutes.js 
+        routes/apiRoutes.js 
+
+        models/
+            example.js 
+            index.js 
+            schema.sql 
+            seeds.sql 
+
+        config/config.js - dotenv using environment variables to connect to DB? 
+
+
+
+
+
+
+USING - 
+    handlebars --> React 
+    Express 
+    mySQL DB with Sequelize ORM 
+    Protected api keys 
+
+
+
+public/index.html 
+
+
+
+//install react-bootstrap       in order to use CDN
+npm i react-bootstrap bootstrap 
+
+
+
+//Format 
+
+Usage: 
+Homepage -
+
+
+
+
+//ISSUES: 
+    CANT RUN IT
+    uses handlebars so have to recreate with react 
+    figure out what to do with database 
+
+
+
+PLAN -
+    grab assets of images 
+    figure out css usage 
+    remember how the pages are made 
+
+    convert all static stuff html and css 
+
+
+    Find tutorial of react database and utilize that instead of 
+    BS MySQL database and Sequelize ORM 
+
+
+
+
+
+//BRANCHES 
+git init 
+
+git branch -b 
+
+1. A-1 
+
+Home page - 
+
+remove navbar, keep logo top left,
+have about us btn, register, login, rent a tool, and lend a tool btns 
+    about us takes to new page OR instead a smooth transition modal from the right  
+
+
+install react boostrap 
+
+
+FIRST STEP FIREBASE (could do MERN but firebase easier)
+//Need register and login user so will utilize a backend server to do so.
+
+REACT/TUTORIALS/firebase
+
+
+A-2 
+
+NOTE: 
+    npm run dev 
+
+PLAN: integrate Firebase authentication using tutorial 
+
+1. setup firebase for dev and production 
+
+2. setup connection for dev using:
+    firebase.js
+    .env.local  
+    npm i firebase
+
+3. Signup functionality 
+    /contexts/AuthContext.js  - context for all authentication from firebase 
+    /components/Signup.js  - components to use (decide if whole page or just child component)
+
+    connect AuthContext to firebase config 
+    setup sign up with firebase funcs 
+
+4. Route for signup 
+    <App/> signup public route 
+    import <AuthProvider/> from AuthContext
+    Wrap routes with AuthProvider
+
