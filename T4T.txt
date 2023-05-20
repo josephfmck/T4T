@@ -180,3 +180,11 @@ PLAN: integrate Firebase authentication using tutorial
     import <AuthProvider/> from AuthContext
     Wrap routes with AuthProvider
 
+
+
+A-3 
+    PULLING TO DIFF COMPUTER SETUP:
+
+    .env.local for firebase config 
+    make sure package.json has all dependencies and package.lock
+
