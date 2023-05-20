@@ -208,3 +208,5 @@ signup and login
 //add links to register and login for home page 
 
 //Sign up and Login ROUTES SET 
+
+A-4
