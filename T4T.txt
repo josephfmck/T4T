@@ -238,7 +238,12 @@ A-5
 
 form submit
     sends email to reset password 
- 
+
+
+
+
+A-6
+
 Make private route
 
 <App/> - private route wrapper
