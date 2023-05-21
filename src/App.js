@@ -8,6 +8,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import ForgotPassword from "./components/ForgotPassword";
+import PrivateRoute from "./components/PrivateRoute";
 
 
 function App() {

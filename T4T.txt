@@ -231,10 +231,6 @@ Logout btn created within Home.jsx
 
 
 A-5 
-Private routes 
-    update profile - private
-    forgot password - private
-
     forgot password 
         /components/ForgotPassword.js - form to reset password
         <App/> - routes for forgot password
@@ -243,3 +239,12 @@ Private routes
 form submit
     sends email to reset password 
  
+Make private route
+
+<App/> - private route wrapper
+
+X <PrivateRoute/> - protects routes, 
+                directs to homepage if not protected route 
+                Private routes 
+
+update profile - private, need btn, component, and wrapped 
