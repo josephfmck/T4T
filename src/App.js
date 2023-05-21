@@ -7,6 +7,7 @@ import About from "./pages/About";
 import { AuthProvider } from "./contexts/AuthContext";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import ForgotPassword from "./components/ForgotPassword";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login/>} />
+          <Route path="/forgot-password" element={<ForgotPassword/>} />
         </Routes>
       </AuthProvider>
     </Router>

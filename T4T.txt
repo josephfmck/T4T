@@ -231,3 +231,15 @@ Logout btn created within Home.jsx
 
 
 A-5 
+Private routes 
+    update profile - private
+    forgot password - private
+
+    forgot password 
+        /components/ForgotPassword.js - form to reset password
+        <App/> - routes for forgot password
+        <AuthContext/> - firebase reset func 
+
+form submit
+    sends email to reset password 
+ 
