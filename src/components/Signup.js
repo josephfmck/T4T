@@ -55,7 +55,7 @@ function Signup() {
 
   return (
     <Container 
-    className="d-flex align-items-center justify-content-center"
+    className="d-flex align-items-center justify-content-center flex-column"
     style={{ minHeight: "100vh" }}
     >
       <Card>
@@ -92,9 +92,9 @@ function Signup() {
           </Form>
         </Card.Body>
       </Card>
-      {/* <div className="w-100 text-center mt-2">
+      <div className="w-100 text-center mt-2">
         Already have an account? <Link to="/login">Log In</Link>
-      </div> */}
+      </div>
     </Container>
   );
 }

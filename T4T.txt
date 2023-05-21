@@ -210,3 +210,21 @@ signup and login
 //Sign up and Login ROUTES SET 
 
 A-4
+
+Logout - btn logs out user redirects to homepage
+    Home.jsx -
+        event handler, conect to AuthContext
+
+    authcontext.js -
+        setup firebase logout func
+
+css- btn display none when log out successful
+
+
+Logout btn created within Home.jsx 
+    check if user logged in 
+    if so display logout btn
+    when clicked logout btn disappears and user logged out
+
+
+// NEED TO TURN INTO COMPONENT LATER

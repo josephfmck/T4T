@@ -1,6 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 //*Routing
 import { Link, useNavigate } from "react-router-dom";
+
+//*Auth 
+import { useAuth, currentUser } from "../contexts/AuthContext";
 //*images
 import t4tImg from "../assets/T4Twelcome.png";
 import logoImg from "../assets/logo.png";
@@ -14,7 +17,29 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
+//*html
+
+
 function Home() {
+  //!STATE
+  const [error, setError] = useState("");
+  //!CONTEXT
+  //*firebase Auth Context:
+  const { currentUser, logout } = useAuth();
+  //!HOOKS
+  const navigate = useNavigate();
+
+  //!EVENTS
+  async function handleLogout() {
+    setError("Log out failed");
+
+    try {
+      await logout();
+    } catch {
+      setError("Failed to log out");
+    }
+  }
+
   return (
     <>
       <div id="bg-img">
@@ -23,23 +48,26 @@ function Home() {
       <header>
         <img src={logoImg} className="logoheader" alt="logoheader" />
         <button id="about">About Us</button>
-        <button id="logout"> Logout</button>
+
+        {/* if logged in display log out, else nothing */}
+        {currentUser ? (
+          <button variant="link" id="logout" onClick={handleLogout}>
+            Log Out
+          </button>
+        ) : (
+          ""
+        )}
       </header>
 
       <Container>
         <Row>
           <div className="top-content mt-3 mx-auto">
-
             <Link to="/signup" id="registerBtn" className="">
-              <Button id="signUpBtn">
-                Sign Up
-              </Button>
+              <Button id="signUpBtn">Sign Up</Button>
             </Link>
 
             <Link to="/login" id="loginBtn" className="">
-              <Button id="loginBtn">
-                Login
-              </Button>
+              <Button id="loginBtn">Login</Button>
             </Link>
           </div>
         </Row>
