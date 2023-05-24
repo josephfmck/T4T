@@ -263,3 +263,24 @@ authcontext update with methods
 <App/> wrap updateProfile route with privateroute 
 
 
+A-8 
+
+Conditionally render for Home page 
+based on logged in or not 
+
+if currentUser doesnt exist - Public
+Header:
+    about us BTN - CSS kept to the right
+Main: 
+    signup BTN 
+    login BTN 
+
+if currentUser does exist - Private 
+Header: 
+    about us BTN 
+    update Profile BTN 
+    log out BTN 
+Main:
+    replace signup - Rent BTN 
+    replace login - Lend BTN 
+

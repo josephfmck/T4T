@@ -49,7 +49,7 @@ header {
   align-items: center;
   img.logoheader {
     margin-right: auto ;
-    width: 150px;
+    width: 122px;
     border-radius: 0px 0px 10px 0px;
   }
   button {
@@ -57,13 +57,21 @@ header {
     background-color: #fff;
     border: none;
     width: 200px;
-    height: 70px;
-    font-size: 40px;
+    height: 56px;
+    font-size: 30px;
     font-family: 'Phosphate';
     font-weight: bold;
     border-radius: 0px 0px 0px 10px;
   }
   #about {
+    margin-left: auto;
+    border-radius: 0px 0px 0px 10px;
+    &.private {
+      margin: auto;
+      border-radius: 0px 0px 10px 10px;
+    }
+  }
+  #update-profile {
     margin: auto;
     border-radius: 0px 0px 10px 10px;
   }
@@ -83,10 +91,13 @@ header {
     background-color: rgb(255, 38, 0);
     width: 200px;
     height: 70px;
-    font-size: 40px;
+    font-size: 35px;
     font-family: 'Phosphate';
     font-weight: bold;
     border: none;
+    // &#rentBtn, &#lendBtn {
+    //   height: 130px;
+    // }
   }
 }
 

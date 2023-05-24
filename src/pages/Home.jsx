@@ -47,7 +47,14 @@ function Home() {
       </div>
       <header>
         <img src={logoImg} className="logoheader" alt="logoheader" />
+        {currentUser ? (
+        <>
+          <button id="about" className="private">About Us</button>
+          <button id="update-profile">Update Profile</button>
+        </>
+        ) : (
         <button id="about">About Us</button>
+        )}
 
         {/* if logged in display log out, else nothing */}
         {currentUser ? (
@@ -61,7 +68,14 @@ function Home() {
 
       <Container>
         <Row>
-          <div className="top-content mt-3 mx-auto">
+          <div className="top-content mt-5 mx-auto">
+            {currentUser ? (
+              <> 
+                <Button id="rentBtn">Rent Tools</Button>
+                <Button id="lendBtn">Lend Tools</Button>
+              </>
+            ) : (
+              <>
             <Link to="/signup" id="registerBtn" className="">
               <Button id="signUpBtn">Sign Up</Button>
             </Link>
@@ -69,6 +83,8 @@ function Home() {
             <Link to="/login" id="loginBtn" className="">
               <Button id="loginBtn">Login</Button>
             </Link>
+              </>
+            )}
           </div>
         </Row>
         {/* <Row>
