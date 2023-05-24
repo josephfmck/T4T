@@ -5,6 +5,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
   sendPasswordResetEmail,
+  updateEmail,
+  updatePassword
 } from "firebase/auth";
 import { firebaseAuth } from "../firebase";
 
@@ -36,13 +38,22 @@ export function AuthProvider({ children }) {
   }
 
   function logout() {
-    //!Firebase auth method
     return signOut(firebaseAuth);
   }
 
   //*Sends email to user's passed in email to reset password
   function resetPassword(email) {
     return sendPasswordResetEmail(firebaseAuth, email);
+  }
+
+  //*update email
+  function updateEmailInFirebase(newEmail) {
+    return updateEmail(currentUser, newEmail);
+  }
+
+  //*update password
+  function updatePasswordInFirebase(newPassword) {
+    return updatePassword(currentUser, newPassword);
   }
 
   useEffect(() => {
@@ -66,6 +77,8 @@ export function AuthProvider({ children }) {
     login,
     logout,
     resetPassword,
+    updateEmailInFirebase,
+    updatePasswordInFirebase
   };
 
   //!RENDER

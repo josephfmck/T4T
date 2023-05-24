@@ -252,4 +252,14 @@ X <PrivateRoute/> - protects routes,
                 directs to homepage if not protected route 
                 Private routes 
 
+
+A-7 
+
+Make update-profile page 
 update profile - private, need btn, component, and wrapped 
+
+components/updateProfile.js 
+authcontext update with methods 
+<App/> wrap updateProfile route with privateroute 
+
+
