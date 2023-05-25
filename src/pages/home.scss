@@ -49,7 +49,7 @@ header {
   align-items: center;
   img.logoheader {
     margin-right: auto ;
-    width: 122px;
+    width: 120px;
     border-radius: 0px 0px 10px 0px;
   }
   button {
@@ -73,7 +73,9 @@ header {
   }
   #update-profile {
     margin: auto;
-    border-radius: 0px 0px 10px 10px;
+    button {
+      border-radius: 0px 0px 10px 10px;
+    }
   }
   #logout {
     margin-left: auto;

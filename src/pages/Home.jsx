@@ -49,11 +49,18 @@ function Home() {
         <img src={logoImg} className="logoheader" alt="logoheader" />
         {currentUser ? (
         <>
-          <button id="about" className="private">About Us</button>
-          <button id="update-profile">Update Profile</button>
+          <Link to="/about">
+            <button id="about" className="private">About Us</button>
+          </Link>
+
+          <Link to="/update-profile" id="update-profile" className="">
+            <button>Update Profile</button>
+          </Link>
         </>
         ) : (
-        <button id="about">About Us</button>
+          <Link to="/about" id="about">
+            <button className="">About Us</button>
+          </Link>
         )}
 
         {/* if logged in display log out, else nothing */}
@@ -62,7 +69,7 @@ function Home() {
             Log Out
           </button>
         ) : (
-          ""
+          <></>
         )}
       </header>
 
@@ -76,41 +83,18 @@ function Home() {
               </>
             ) : (
               <>
-            <Link to="/signup" id="registerBtn" className="">
-              <Button id="signUpBtn">Sign Up</Button>
+            <Link to="/signup" className="">
+              <Button>Sign Up</Button>
             </Link>
 
-            <Link to="/login" id="loginBtn" className="">
-              <Button id="loginBtn">Login</Button>
+            <Link to="/login" className="">
+              <Button>Login</Button>
             </Link>
               </>
             )}
           </div>
         </Row>
-        {/* <Row>
-        <Button>RENT-A-TOOL</Button>
-        <Button>LEND-A-TOOL</Button>
-        </Row> */}
       </Container>
-
-      {/* <nav>
-            <a className="active home" href="/">
-              HOME
-            </a>
-            <a href="tools" className="rent">
-              RENT
-            </a>
-            <a href="lender" className="lend">
-              LEND
-            </a>
-            <a href="/#aboutUs" className="about">
-              ABOUT US
-            </a>
-            <a href="/#callDave" className="callDave">
-              NEED ADVICE? - CALL DAVE
-            </a>
-          </nav> */}
-
       <footer>
         <div className="push">
           &copy; <img src={logoImg} className="logo" alt="logo" /> 2023. All
