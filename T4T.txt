@@ -284,3 +284,14 @@ Main:
     replace signup - Rent BTN 
     replace login - Lend BTN 
 
+A-9
+
+styling of btns 
+
+Rent page and Lend Pages 
+jsx and scss, routes
+
+Lend page 
+
+html and css form created 
+

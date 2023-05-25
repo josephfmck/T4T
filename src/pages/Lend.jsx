@@ -1,26 +1,26 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 //*Routing
 import { Link, useNavigate } from "react-router-dom";
 
-//*Auth 
+//*Auth
 import { useAuth, currentUser } from "../contexts/AuthContext";
 //*images
 import t4tImg from "../assets/T4Twelcome.png";
 import logoImg from "../assets/logo.png";
 
 //* CSS
-import "./home.scss";
+import "./lend.scss";
 
 //*bootstrap components
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 //*html
 
-
-function Home() {
+function Rent() {
   //!STATE
   const [error, setError] = useState("");
   //!CONTEXT
@@ -48,15 +48,15 @@ function Home() {
       <header>
         <img src={logoImg} className="logoheader" alt="logoheader" />
         {currentUser ? (
-        <>
-          <Link to="/about" id="about" className="private">
-            <button>About Us</button>
-          </Link>
+          <>
+            <Link to="/about" id="about" className="private">
+              <button>About Us</button>
+            </Link>
 
-          <Link to="/update-profile" id="update-profile" className="">
-            <button>Update Profile</button>
-          </Link>
-        </>
+            <Link to="/update-profile" id="update-profile" className="">
+              <button>Update Profile</button>
+            </Link>
+          </>
         ) : (
           <Link to="/about" id="about">
             <button className="">About Us</button>
@@ -73,26 +73,32 @@ function Home() {
         )}
       </header>
 
-      <Container>
+      <Container className="bg-white mt-5 d-flex align-items-center justify-content-center flex-column">
         <Row>
-          <div className="top-content mt-5 mx-auto">
-            {currentUser ? (
-              <> 
-                <Button id="rentBtn">Rent Tools</Button>
-                <Button id="lendBtn">Lend Tools</Button>
-              </>
-            ) : (
-              <>
-            <Link to="/signup" className="">
-              <Button>Sign Up</Button>
-            </Link>
+            <h1 className="text-center my-5">Lend a Tool</h1>
+            <Form>
+              <Form.Group className="mb-3" controlId="formToolName">
+                <Form.Label>Tools Name</Form.Label>
+                <Form.Control type="text" placeholder="Enter tools name" />
+                {/* <Form.Text className="text-muted">
+                  We'll never share your email with anyone else.
+                </Form.Text> */}
+              </Form.Group>
 
-            <Link to="/login" className="">
-              <Button>Login</Button>
-            </Link>
-              </>
-            )}
-          </div>
+              <Form.Group className="mb-3" controlId="formDuration">
+                <Form.Label>Duration of Rental</Form.Label>
+                <Form.Control type="text" placeholder="Weekly/BiWeekly/Monthly" />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formPrice">
+                <Form.Label>Price</Form.Label>
+                <Form.Control type="text" placeholder="$5.00" />
+              </Form.Group>
+              <div className="mx-auto text-center">
+              <Button type="submit">
+                Submit
+              </Button>
+              </div>
+            </Form>
         </Row>
       </Container>
       <footer>
@@ -105,4 +111,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Rent;

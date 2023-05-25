@@ -20,7 +20,7 @@ import Button from "react-bootstrap/Button";
 //*html
 
 
-function Home() {
+function Rent() {
   //!STATE
   const [error, setError] = useState("");
   //!CONTEXT
@@ -105,4 +105,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Rent;

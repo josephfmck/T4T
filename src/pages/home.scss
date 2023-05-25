@@ -65,10 +65,14 @@ header {
   }
   #about {
     margin-left: auto;
-    border-radius: 0px 0px 0px 10px;
+    button {
+      border-radius: 0px 0px 0px 10px;
+    }
     &.private {
       margin: auto;
-      border-radius: 0px 0px 10px 10px;
+      button {
+        border-radius: 0px 0px 10px 10px;
+      }
     }
   }
   #update-profile {
@@ -97,9 +101,6 @@ header {
     font-family: 'Phosphate';
     font-weight: bold;
     border: none;
-    // &#rentBtn, &#lendBtn {
-    //   height: 130px;
-    // }
   }
 }
 
