@@ -295,3 +295,20 @@ Lend page
 
 html and css form created 
 
+A10 implement firestore database
+
+restructure files
+    firebase/
+        firebase.js - config.js file 
+
+fixing issue: when signup it takes user directly to home page that renders the private stuff
+    instead of displaying only when logged in 
+
+SOLVED: 
+    created globalContext with a logged in Check state 
+    passed this login check state to 
+        <Home/> and <Login/>
+    wrappe <App/> with provider of globalContext
+    conditionally check <Home/> for currentUser AND login check state 
+    NOW signup redirects to Home page that DOES NOT have the private functionality 
+    and waits for user to Login to check log in.

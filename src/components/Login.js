@@ -1,8 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
-//Firebase Auth Context
+//*Firebase Auth Context
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+//*Global context
+import { GlobalContext } from "../contexts/GlobalContext";
 //*CSS
 import { Container } from "react-bootstrap";
 
@@ -15,6 +17,8 @@ function Login() {
   const [error, setError] = useState("");
   const [loginLoading, setLoginLoading] = useState(false);
   const navigate = useNavigate();
+  //*global context state 
+  const { loginCheck, setLoginCheck } = useContext(GlobalContext);
 
   //!EVENTS
   async function handleSubmit(e) {
@@ -32,6 +36,7 @@ function Login() {
       //redirect to homepage
       navigate("/");
       setLoginLoading(false);
+      setLoginCheck(true);
       return;
     } catch (error) {
       setError("Failed to sign in");

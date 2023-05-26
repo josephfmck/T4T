@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 //*Routing
 import { Link, useNavigate } from "react-router-dom";
 
 //*Auth 
-import { useAuth, currentUser } from "../contexts/AuthContext";
+import { useAuth } from "../contexts/AuthContext";
 //*images
 import t4tImg from "../assets/T4Twelcome.png";
 import logoImg from "../assets/logo.png";
@@ -17,7 +17,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
-//*html
+//*Global Context
+import { GlobalContext } from "../contexts/GlobalContext";
 
 
 function Home() {
@@ -26,15 +27,16 @@ function Home() {
   //!CONTEXT
   //*firebase Auth Context:
   const { currentUser, logout } = useAuth();
+  //*Global Context:
+  const { loginCheck, setLoginCheck } = useContext(GlobalContext);
   //!HOOKS
   const navigate = useNavigate();
 
   //!EVENTS
   async function handleLogout() {
-    setError("Log out failed");
-
     try {
       await logout();
+      setLoginCheck(false);
     } catch {
       setError("Failed to log out");
     }
@@ -47,7 +49,7 @@ function Home() {
       </div>
       <header>
         <img src={logoImg} className="logoheader" alt="logoheader" />
-        {currentUser ? (
+        {currentUser && loginCheck && loginCheck === true ? (
         <>
           <Link to="/about" id="about" className="private">
             <button>About Us</button>
@@ -64,7 +66,7 @@ function Home() {
         )}
 
         {/* if logged in display log out, else nothing */}
-        {currentUser ? (
+        {currentUser && loginCheck && loginCheck === true ? (
           <button variant="link" id="logout" onClick={handleLogout}>
             Log Out
           </button>
@@ -76,7 +78,7 @@ function Home() {
       <Container>
         <Row>
           <div className="top-content mt-5 mx-auto">
-            {currentUser ? (
+            {currentUser && loginCheck && loginCheck === true ? (
               <> 
                 <Button id="rentBtn">Rent Tools</Button>
                 <Button id="lendBtn">Lend Tools</Button>

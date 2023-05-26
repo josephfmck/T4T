@@ -8,7 +8,7 @@ function PrivateRoute({ component: Component, ...rest }) {
   const { currentUser } = useAuth();
 
   // if login user exist render, else redirect to login
-  return currentUser ? <Outlet /> : <Navigate to="/" />;
+  return currentUser && currentUser.email ? <Outlet /> : <Navigate to="/" />;
 }
 
 export default PrivateRoute;

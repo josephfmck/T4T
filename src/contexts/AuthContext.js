@@ -8,7 +8,7 @@ import {
   updateEmail,
   updatePassword
 } from "firebase/auth";
-import { firebaseAuth } from "../firebase";
+import { firebaseAuth } from "../firebase/config";
 
 //*actual context to export for entire application
 const AuthContext = React.createContext();
