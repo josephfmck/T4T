@@ -29,17 +29,24 @@ export function DBProvider({ children }) {
     async function getToolsList() {
         //get snapshot of collection
         //?pass in ref to collection
-        const querySnapshot = await getDocs(toolsListRef);
-        const updatedToolsList = querySnapshot.docs.map((doc) => doc.data());
-        setToolsList(updatedToolsList);
-        return updatedToolsList;
+        const data = await getDocs(toolsListRef);
+        const filteredData = data.docs.map((doc) => ({
+            ...doc.data(),
+            id: doc.id
+        }));
+        setToolsList(filteredData);
+        console.log(filteredData);
+        return filteredData;
     }
 
     //!ON RENDER 
     useEffect(() => {
         const unsubscribe = onSnapshot(toolsListRef, (querySnapshot) => {
             //*whenever db updates, map through entire collection
-            const updatedToolsList = querySnapshot.docs.map((doc) => doc.data());
+            const updatedToolsList = querySnapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data()
+            }));
             setToolsList(updatedToolsList);
             setDBLoading(false);
         });
@@ -56,7 +63,7 @@ export function DBProvider({ children }) {
     //!RENDER
     return (
         <DBContext.Provider value={dbState}>
-            {children}
+            {!DBloading && children}
         </DBContext.Provider>
     );
 }

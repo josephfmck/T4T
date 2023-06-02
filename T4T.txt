@@ -375,3 +375,5 @@ NOW able to read the toolsList from the button on Lend page
 A12 
 
 fixed to console.log that toolsList state from DBContext 
+
+fixed console.log and useEffect to include the ID with the collection document

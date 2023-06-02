@@ -49,9 +49,6 @@ function Lend() {
     try {
       //reads and returns toolsList state from DB 
       await getToolsList();
-      if (toolsList) {
-        console.log(toolsList);
-      }
     } catch {
       setError("Failed to get Tools List");
     }
