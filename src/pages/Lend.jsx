@@ -3,7 +3,9 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 //*Auth
-import { useAuth, currentUser } from "../contexts/AuthContext";
+import { useAuth } from "../contexts/AuthContext";
+//*DB
+import { useDB } from "../contexts/DBContext";
 //*images
 import t4tImg from "../assets/T4Twelcome.png";
 import logoImg from "../assets/logo.png";
@@ -20,12 +22,14 @@ import Form from "react-bootstrap/Form";
 
 //*html
 
-function Rent() {
+function Lend() {
   //!STATE
   const [error, setError] = useState("");
   //!CONTEXT
   //*firebase Auth Context:
   const { currentUser, logout } = useAuth();
+  //*DB Context:
+  const { toolsList, getToolsList } = useDB();
   //!HOOKS
   const navigate = useNavigate();
 
@@ -37,6 +41,17 @@ function Rent() {
       await logout();
     } catch {
       setError("Failed to log out");
+    }
+  }
+
+  async function handleToolsBtn() {
+    setError("Get Tools List failed");
+
+    try {
+      const toolsList = await getToolsList();
+      console.log(toolsList);
+    } catch {
+      setError("Failed to get Tools List");
     }
   }
 
@@ -100,6 +115,7 @@ function Rent() {
               </div>
             </Form>
         </Row>
+        <Button id="toolsListBtn" onClick={handleToolsBtn}>Get tools List from DB</Button>
       </Container>
       <footer>
         <div className="push">
@@ -111,4 +127,4 @@ function Rent() {
   );
 }
 
-export default Rent;
+export default Lend;

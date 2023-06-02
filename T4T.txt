@@ -312,3 +312,64 @@ SOLVED:
     conditionally check <Home/> for currentUser AND login check state 
     NOW signup redirects to Home page that DOES NOT have the private functionality 
     and waits for user to Login to check log in.
+
+
+A11 
+Figure out firebase CRUD operations 
+
+
+config.js - update for database - firestore and storage 
+
+Create context for DB firebase methods 
+
+DBContext.js - 
+
+IN firebase - 
+
+build tab/ Firestore Database 
+create database  
+    production Mode - read and write rules 
+    united states - enable database location
+start a collection btn
+    collection - tools 
+        document - create example document item
+            auto generate ID 
+            add fields - 
+                name, duration, price 
+
+Read the document:
+IN config.js - setup firestore
+    import firestore 
+    export db 
+
+IN DBContext.js - 
+    methods to provide to other components
+    state - list of tools from DB 
+    useEffect - read the db on load 
+
+    methods - 
+        getDocs - get entire arr of docs 
+            getDocs(db, "collectionRef")
+        getDoc - get one doc 
+        collection - specify collection reference
+        onSnapShot - snapshot when db updates, used in useeffect
+
+IN App 
+    wrap with DB provider 
+
+IN Lend.jsx 
+    import DB methods and toolsList 
+    create btn to call async getToolsList 
+
+IN Firebase 
+    Have to set Rules in order to get permissions 
+    Firestore Database tab 
+        Rules tab 
+            allow read and write to true 
+    By default read and write rules are false 
+        meaning no one is allowed to read/write 
+        set to true means everyone is allowed 
+
+NOW able to read the toolsList from the button on Lend page
+
+A12 
