@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 //*Routing
 import { Link, useNavigate } from "react-router-dom";
 
@@ -45,11 +45,13 @@ function Lend() {
   }
 
   async function handleToolsBtn() {
-    setError("Get Tools List failed");
 
     try {
-      const toolsList = await getToolsList();
-      console.log(toolsList);
+      //reads and returns toolsList state from DB 
+      await getToolsList();
+      if (toolsList) {
+        console.log(toolsList);
+      }
     } catch {
       setError("Failed to get Tools List");
     }

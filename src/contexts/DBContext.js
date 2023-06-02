@@ -30,17 +30,16 @@ export function DBProvider({ children }) {
         //get snapshot of collection
         //?pass in ref to collection
         const querySnapshot = await getDocs(toolsListRef);
-        const toolsList = querySnapshot.docs.map((doc) => doc.data());
-        return toolsList;
+        const updatedToolsList = querySnapshot.docs.map((doc) => doc.data());
+        setToolsList(updatedToolsList);
+        return updatedToolsList;
     }
 
     //!ON RENDER 
     useEffect(() => {
         const unsubscribe = onSnapshot(toolsListRef, (querySnapshot) => {
             //*whenever db updates, map through entire collection
-            const updatedToolsList = querySnapshot.docs.map((doc) => {
-                doc.data();
-            });
+            const updatedToolsList = querySnapshot.docs.map((doc) => doc.data());
             setToolsList(updatedToolsList);
             setDBLoading(false);
         });

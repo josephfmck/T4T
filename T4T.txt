@@ -373,3 +373,5 @@ IN Firebase
 NOW able to read the toolsList from the button on Lend page
 
 A12 
+
+fixed to console.log that toolsList state from DBContext 
