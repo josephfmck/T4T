@@ -387,3 +387,16 @@ Component to display the toolsList from DBContext
 Read the toolsList from the DB and display on Lend page 
     map through toolsList and display each tool 
     display name, duration, price
+
+ToolList component 
+    import toolsList DB context
+    map through toolsList and display each tool
+
+Rent.jsx page 
+    import toolList component 
+    display toolList component
+
+DBContext
+    edited useEffect to update toolsList state func outside of it
+    to prevent infinite loop of grabbing DB from firebase 
+

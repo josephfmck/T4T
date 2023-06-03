@@ -39,19 +39,28 @@ export function DBProvider({ children }) {
         return filteredData;
     }
 
+    //*Query Snapshot
+    //*Update tools list for useEffect (outside useEffect so not called infinitely)
+    const updatedToolsListSnapShot = (querySnapshot) => {
+        const updatedToolsList = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      setToolsList(updatedToolsList);
+      setDBLoading(false);
+    };
+
     //!ON RENDER 
     useEffect(() => {
-        const unsubscribe = onSnapshot(toolsListRef, (querySnapshot) => {
-            //*whenever db updates, map through entire collection
-            const updatedToolsList = querySnapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data()
-            }));
-            setToolsList(updatedToolsList);
-            setDBLoading(false);
-        });
+        //*whenever db updates, map through entire collection
+            //pass in the snapshot of the collection
+        const unsubscribe = onSnapshot(toolsListRef, updatedToolsListSnapShot);
 
-        return unsubscribe;
+        //cleanup function
+        return () => {
+            // Unsubscribe when the component unmounts
+            unsubscribe();
+        };
     }, [toolsListRef]);
 
     //!STATE PASSED TO COMPONENTS

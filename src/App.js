@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Lend from "./pages/Lend";
+import Rent from "./pages/Rent";
 //*Auth
 import { AuthProvider } from "./contexts/AuthContext";
 //*Global Context
@@ -31,6 +32,7 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route path="/rent" element={<Rent />} />
               <Route path="/lend" element={<Lend />} />
             </Routes>
           </DBProvider>
