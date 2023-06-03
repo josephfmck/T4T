@@ -377,3 +377,13 @@ A12
 fixed to console.log that toolsList state from DBContext 
 
 fixed console.log and useEffect to include the ID with the collection document
+
+A13
+Component to display the toolsList from DBContext 
+    ToolList.jsx 
+        import toolsList from DBContext 
+        map through toolsList and display each tool 
+        display name, duration, price
+Read the toolsList from the DB and display on Lend page 
+    map through toolsList and display each tool 
+    display name, duration, price
