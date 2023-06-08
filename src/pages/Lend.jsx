@@ -25,18 +25,20 @@ import Form from "react-bootstrap/Form";
 function Lend() {
   //!STATE
   const [error, setError] = useState("");
+  //?move to DB context later 
+  const [toolName, setToolName] = useState("");
+  const [toolDuration, setToolDuration] = useState("");
+  const [toolPrice, setToolPrice] = useState(0);
   //!CONTEXT
   //*firebase Auth Context:
   const { currentUser, logout } = useAuth();
   //*DB Context:
-  const { toolsList, getToolsList } = useDB();
+  const { toolsList, addTool } = useDB();
   //!HOOKS
   const navigate = useNavigate();
 
   //!EVENTS
   async function handleLogout() {
-    setError("Log out failed");
-
     try {
       await logout();
     } catch {
@@ -44,15 +46,24 @@ function Lend() {
     }
   }
 
-  async function handleToolsBtn() {
-
+  async function onSubmit() {
     try {
-      //reads and returns toolsList state from DB 
-      await getToolsList();
-    } catch {
-      setError("Failed to get Tools List");
+      await addTool(toolName, toolDuration, toolPrice);
+    }
+    catch {
+      setError("Failed to submit tool");
     }
   }
+
+  // async function handleSubmit() {
+
+  //   try {
+  //     //submit form tool to DB
+  //     await getToolsList();
+  //   } catch {
+  //     setError("Failed to submit tool");
+  //   }
+  // }
 
   return (
     <>
@@ -93,7 +104,13 @@ function Lend() {
             <Form>
               <Form.Group className="mb-3" controlId="formToolName">
                 <Form.Label>Tools Name</Form.Label>
-                <Form.Control type="text" placeholder="Enter tools name" />
+                <Form.Control 
+                  type="text" 
+                  placeholder="Enter tools name" 
+                  onChange={(e) => 
+                    setToolName(e.target.value)
+                  }
+                />
                 {/* <Form.Text className="text-muted">
                   We'll never share your email with anyone else.
                 </Form.Text> */}
@@ -101,20 +118,34 @@ function Lend() {
 
               <Form.Group className="mb-3" controlId="formDuration">
                 <Form.Label>Duration of Rental</Form.Label>
-                <Form.Control type="text" placeholder="Weekly/BiWeekly/Monthly" />
+                <Form.Control 
+                  type="text" 
+                  placeholder="Weekly/BiWeekly/Monthly"
+                  onChange={(e) => 
+                    setToolDuration(e.target.value)
+                  }
+                />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formPrice">
                 <Form.Label>Price</Form.Label>
-                <Form.Control type="text" placeholder="$5.00" />
+                <Form.Control 
+                  type="number" 
+                  placeholder={5}
+                  onChange={(e) => 
+                    setToolPrice(Number(e.target.value))
+                  } 
+                />
               </Form.Group>
               <div className="mx-auto text-center">
-              <Button type="submit">
-                Submit
+              <Button 
+                type="submit"
+                onClick={onSubmit}
+              >
+                Submit Tool for Rental
               </Button>
               </div>
             </Form>
         </Row>
-        <Button id="toolsListBtn" onClick={handleToolsBtn}>Get tools List from DB</Button>
       </Container>
       <footer>
         <div className="push">

@@ -400,3 +400,15 @@ DBContext
     edited useEffect to update toolsList state func outside of it
     to prevent infinite loop of grabbing DB from firebase 
 
+
+
+ISSUE: IN DBContext useEffect with onSnapshot is infinitely pulling the reading of tools 
+Causing the rate limit to max out within minutes. 
+SOLUTION: Comment out and dont use onSnapshot with DBContext's useEffect 
+Setup so it will execute instead when we load the Rent page and hopefully doesn't keep pulling from DB infinitely 
+
+https://www.youtube.com/watch?v=YmpWOTT2qdw 
+for solution on how to fix this 
+
+SOLUTION: in useEffect keep [] as empty dependeny arr 
+so that only runs when page loads 

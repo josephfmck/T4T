@@ -52,6 +52,8 @@ function Rent() {
   //   }
   // }
 
+
+  //!RENDER
   return (
     <>
       <div id="bg-img">

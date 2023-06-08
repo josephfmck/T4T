@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext } from "react";
+import React, { useRef, useState, useContext, useEffect, useCallback } from "react";
 //*Firebase Auth Context
 import { useAuth } from "../contexts/AuthContext";
 import { useDB } from "../contexts/DBContext";
@@ -24,35 +24,27 @@ function ToolList() {
   const [error, setError] = useState("");
   const [loginLoading, setLoginLoading] = useState(false);
 
-  //!EVENTS
-//   async function handleToolsBtn() {
+  // Run getToolsList when the component mounts
+  //!Empty [] PREVENTS FROM RUNNING INFINITELY
+  useEffect(() => {
+    getToolsList();
+  }, []);
 
-//     try {
-//       //reads and returns toolsList state from DB 
-//       await getToolsList();
-//     } catch {
-//       setError("Failed to get Tools List");
-//     }
-//   }
-
-
+  
 
   return (
     <>
-    <Card style={{ width: '18rem' }}>
-      {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-      <Card.Body>
-        <Card.Title>Tool Name</Card.Title>
-        <Card.Text>
-          Tool duration
-          Tool price
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
-    </Card>
-    {toolsList.map((tool) => {
+      <Card style={{ width: "18rem" }}>
+        {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+        <Card.Body>
+          <Card.Title>Tool Name</Card.Title>
+          <Card.Text>Tool duration Tool price</Card.Text>
+          <Button variant="primary">Go somewhere</Button>
+        </Card.Body>
+      </Card>
+      {toolsList.map((tool) => {
         return (
-          <Card style={{ width: '18rem' }} key={tool.id}>
+          <Card style={{ width: "18rem" }} key={tool.id}>
             <Card.Body>
               <Card.Title>{tool.name}</Card.Title>
               <Card.Text>
@@ -64,10 +56,10 @@ function ToolList() {
               <Button variant="primary">Go somewhere</Button>
             </Card.Body>
           </Card>
-        )
-    })};
-
-    {/* <Button id="toolsListBtn" onClick={handleToolsBtn}>Get tools List from DB</Button> */}
+        );
+      })}
+      ;
+      {/* <Button id="toolsListBtn" onClick={handleToolsBtn}>Get tools List from DB</Button> */}
     </>
   );
 }
