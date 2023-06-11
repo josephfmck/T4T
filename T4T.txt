@@ -412,3 +412,6 @@ for solution on how to fix this
 
 SOLUTION: in useEffect keep [] as empty dependeny arr 
 so that only runs when page loads 
+
+A14 
+
