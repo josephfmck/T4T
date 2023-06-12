@@ -6,7 +6,8 @@ import {
   signOut,
   sendPasswordResetEmail,
   updateEmail,
-  updatePassword
+  updatePassword,
+  updateProfile,
 } from "firebase/auth";
 import { firebaseAuth } from "../firebase/config";
 
@@ -27,9 +28,28 @@ export function AuthProvider({ children }) {
   //!FIREBASE AUTH METHODS
   //*Create and get current user through ASYNC form submission
   //?returns promise
-  function signup(email, password) {
-    return createUserWithEmailAndPassword(firebaseAuth, email, password);
+  function signup(email, password, username) {
+    return createUserWithEmailAndPassword(firebaseAuth, email, password)
+    .then((userCredential) => {
+      // Update the user's display name with the username
+      updateUsername(userCredential.user, username);
+      return userCredential;
+    });
   }
+
+  //*Username 
+  function updateUsername(user, username) {
+    updateProfile(
+      user, {displayName: username}
+    )
+    .then(() => {
+      console.log("Username added successfully:", username);
+    })
+    .catch((error) => {
+      console.error("Error adding username:", error);
+    });
+  }
+
 
   //*Login user through ASYNC form submission
   //?checks firebase for already signed up user

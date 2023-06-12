@@ -415,3 +415,9 @@ so that only runs when page loads
 
 A14 
 
+signup function redirects to login page 
+
+Added username to signup, updateUser with username in AuthContext 
+NOW can grab signed in user's userName from currentUser.displayName
+
+

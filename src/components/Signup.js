@@ -10,6 +10,7 @@ function Signup() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
+  const userNameRef = useRef();
   //*firebase Auth Context: 
     //signup func, currentUser state
   const { signup, currentUser } = useAuth();
@@ -40,9 +41,10 @@ function Signup() {
       await signup(
         emailRef.current.value,
         passwordRef.current.value,
+        userNameRef.current.value
       );
-      //redirect to homepage
-      navigate("/");
+      //redirect to login
+      navigate("/login");
       setSignupLoading(false);
       return;
     } catch(error) {
@@ -65,6 +67,10 @@ function Signup() {
           {currentUser ? currentUser.email : ""}
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
+            <Form.Group id="username">
+              <Form.Label>Username</Form.Label>
+              <Form.Control type="text" ref={userNameRef} required></Form.Control>
+            </Form.Group>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" ref={emailRef} required></Form.Control>

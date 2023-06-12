@@ -82,6 +82,7 @@ function Home() {
               <> 
                 <Button id="rentBtn">Rent Tools</Button>
                 <Button id="lendBtn">Lend Tools</Button>
+                <div>{currentUser.displayName}</div>
               </>
             ) : (
               <>
