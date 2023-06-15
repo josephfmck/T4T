@@ -1,5 +1,11 @@
+import React, { useState, useContext } from "react";
 //*Routing
 import { Link, useNavigate } from "react-router-dom";
+
+//*Auth Context 
+import { useAuth } from "../contexts/AuthContext";
+//*Global Context
+import { GlobalContext } from "../contexts/GlobalContext";
 
 //*bootstrap
 import Button from "react-bootstrap/Button";
@@ -13,6 +19,23 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import logoImg from "../assets/logo.png";
 
 function Navigation() {
+  //!STATE 
+  const [logoutError, setLogoutError] = useState("");
+  //!CONTEXT
+  const { currentUser, logout } = useAuth();
+  const { loginCheck, setLoginCheck } = useContext(GlobalContext);
+
+  //!EVENTS
+  async function handleLogout() {
+    try {
+      await logout();
+      setLoginCheck(false);
+    } catch {
+      setLogoutError("Failed to log out");
+    }
+  }
+
+  //!RENDER 
   return (
     <Navbar expand="lg" id="main-navbar">
       <Container fluid>
@@ -35,7 +58,7 @@ function Navigation() {
                 Update Profile
               </Link>
             <NavDropdown.Divider />
-              <button id="logout">
+              <button id="logout" onClick={handleLogout}>
                 Log Out
               </button>
           </NavDropdown>
