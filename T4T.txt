@@ -421,3 +421,15 @@ Added username to signup, updateUser with username in AuthContext
 NOW can grab signed in user's userName from currentUser.displayName
 
 
+Navbar
+
+T4T img, About Us link, Update Profile Link, Log Out Btn 
+replace log out btn with dropdown 
+
+Created <Navigation/> to replace the navbar 
+Css applied, 
+    still need: 
+        links, 
+        logout btn functionality,
+        private/public rendering navbar 
+         

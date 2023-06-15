@@ -20,6 +20,8 @@ import Button from "react-bootstrap/Button";
 //*Global Context
 import { GlobalContext } from "../contexts/GlobalContext";
 
+//*Components
+import Navigation from "../components/Navigation";
 
 function Home() {
   //!STATE
@@ -74,6 +76,8 @@ function Home() {
           <></>
         )}
       </header>
+
+      <Navigation />
 
       <Container>
         <Row>

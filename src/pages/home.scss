@@ -1,7 +1,6 @@
-//header#masthead > container > nav >img.logoheader a 
+//header#masthead > container > nav >img.logoheader a
 //section.welcome > img
-//footer > div.push > img 
-
+//footer > div.push > img
 
 #bg-img {
   position: fixed;
@@ -16,8 +15,6 @@
     object-fit: cover;
   }
 }
-
-
 
 // body {
 //   background-image: url("../assets/T4Twelcome.png");
@@ -40,15 +37,104 @@
 //   object-fit: cover;
 // }
 
+//!Navbar
+//*Navbar
+#main-navbar {
+  background-color: transparent;
 
-//*Header 
+  .container-fluid {
+    padding: 0;
+
+    #logo-img-link {
+      padding: 0;
+
+      img#logo-img {
+        margin-right: auto;
+        width: 120px;
+        border-radius: 0px 0px 10px 0px;
+      }
+    }
+
+    //*menu closed - menu toggler btn
+    #basic-navbar-nav {
+      right: 0;
+      left: auto;
+      color: rgb(255, 38, 0);
+      background-color: #fff;
+      border: none;
+      width: 200px;
+      height: 56px;
+      font-size: 30px;
+      font-family: "Phosphate";
+      font-weight: bold;
+      border-radius: 0px 0px 0px 10px;
+    }
+
+    //*toggle when opened
+    #basic-navbar-nav.show {
+      border-radius: 0px 0px 0px 0px;
+    }
+
+    //*when menu opened
+    .dropdown-menu.show {
+      background-color: #fff;
+      padding: 0;
+      margin: 0;
+      border: 0;
+      border-radius: 0;
+      width: 200px;
+      max-height: 100vh;
+      font-size: 30px;
+      font-family: "Phosphate";
+      font-weight: bold;
+    }
+
+
+
+    /* Remove default Link styles */
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    #logout {
+      width: 100%;
+    }
+
+    /* Apply NavDropdown.Item styles to Link */
+    a,
+    #logout {
+      display: block;
+      padding: 0.5rem 1rem;
+      clear: both;
+      font-weight: 400;
+      color: #212529;
+      text-align: inherit;
+      white-space: nowrap;
+      background-color: transparent;
+      border: 0;
+    }
+
+    a:hover,
+    a:focus,
+    #logout:hover,
+    #logout:focus {
+      color: #1e2125;
+      text-decoration: none;
+      background-color: #e9ecef;
+    }
+  }
+}
+//!end navbar
+
+//*Header
 header {
   display: flex;
   justify-content: space-between;
   //?center vertically
   align-items: center;
   img.logoheader {
-    margin-right: auto ;
+    margin-right: auto;
     width: 120px;
     border-radius: 0px 0px 10px 0px;
   }
@@ -59,7 +145,7 @@ header {
     width: 200px;
     height: 56px;
     font-size: 30px;
-    font-family: 'Phosphate';
+    font-family: "Phosphate";
     font-weight: bold;
     border-radius: 0px 0px 0px 10px;
   }
@@ -84,7 +170,6 @@ header {
   #logout {
     margin-left: auto;
   }
-
 }
 
 .top-content {
@@ -98,7 +183,7 @@ header {
     width: 200px;
     height: 70px;
     font-size: 35px;
-    font-family: 'Phosphate';
+    font-family: "Phosphate";
     font-weight: bold;
     border: none;
   }
@@ -150,24 +235,10 @@ header {
 //       a.active:hover {
 //         color: white;
 //         text-decoration: none;
-//       }      
+//       }
 //     }
 //   }
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* footer */
 
@@ -189,10 +260,6 @@ footer {
   }
 }
 
-
-
-
-
 //*HANDLEBARS ETC.
 
 /* items page */
@@ -210,7 +277,6 @@ footer {
 .list-group-item {
   line-height: 2.5;
 }
-
 
 //*MEDIA QUERIES
 
