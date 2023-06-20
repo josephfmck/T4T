@@ -16,29 +16,8 @@
   }
 }
 
-// body {
-//   background-image: url("../assets/T4Twelcome.png");
-//   background-size: cover;
-//   background-repeat: no-repeat;
-//   background-attachment: fixed;
-// }
 
-// #welcome-section {
-//   position: fixed;
-//   height: 100%;
-//   width: 100%;
-//   margin: 0;
-//   padding: 0;
-// }
-
-// .bg-img {
-//   height: 100%;
-//   width: 100%;
-//   object-fit: cover;
-// }
-
-//!Navbar
-//*Navbar
+//!Private Navbar
 #main-navbar {
   background-color: transparent;
   padding: 0;
@@ -54,6 +33,11 @@
         width: 120px;
         border-radius: 0px 0px 10px 0px;
       }
+    }
+
+    .navbar-collapse {
+      flex-basis: initial;
+      flex-grow: initial;
     }
 
     //*menu closed - menu toggler btn
@@ -90,8 +74,6 @@
       font-weight: bold;
     }
 
-
-
     /* Remove default Link styles */
     a {
       text-decoration: none;
@@ -126,9 +108,8 @@
     }
   }
 }
-//!end navbar
 
-//*Header
+//!Public navbar
 header {
   display: flex;
   justify-content: space-between;
@@ -155,24 +136,10 @@ header {
     button {
       border-radius: 0px 0px 0px 10px;
     }
-    &.private {
-      margin: auto;
-      button {
-        border-radius: 0px 0px 10px 10px;
-      }
-    }
-  }
-  #update-profile {
-    margin: auto;
-    button {
-      border-radius: 0px 0px 10px 10px;
-    }
-  }
-  #logout {
-    margin-left: auto;
   }
 }
 
+//*Main Container
 .top-content {
   width: 500px;
   display: flex;
@@ -189,57 +156,6 @@ header {
     border: none;
   }
 }
-
-// header {
-//   position: sticky;
-//   top: 0;
-//   z-index: 1000000;
-//   background: white;
-//   color: black;
-//   border-top: 2px solid red;
-//   border-bottom: 2px solid red;
-//   width: 100%;
-//   overflow: auto;
-//   font-family: Phosphate, Phosphor, "Times New Roman", Times, serif;
-//   font-size: 20px;
-//   text-decoration: none;
-//   .container {
-//     nav {
-//       float: right;
-//       color: black;
-//       a {
-//         display: inline-block;
-//         padding-left: 15px;
-//         padding-right: 15px;
-//         margin-left: 15px;
-//         margin-right: 15px;
-//         line-height: 18px;
-//         color: black;
-//       }
-//       a.active {
-//         background: black;
-//         color: white;
-//         text-decoration: none;
-//         margin-top: -10px;
-//         padding-top: 10px;
-//         padding-bottom: 10px;
-//       }
-//       /* hover styling */
-//       a:hover {
-//         background: black;
-//         color: white;
-//         text-decoration: none;
-//         margin-top: -10px;
-//         padding-top: 10px;
-//         padding-bottom: 10px;
-//       }
-//       a.active:hover {
-//         color: white;
-//         text-decoration: none;
-//       }
-//     }
-//   }
-// }
 
 /* footer */
 

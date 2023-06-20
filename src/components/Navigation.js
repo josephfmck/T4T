@@ -42,10 +42,12 @@ function Navigation() {
       <Link to="/" id="logo-img-link" className="">
         <img src={logoImg} id="logo-img" alt="logo-img" />
       </Link>        
-        <Navbar.Toggle aria-controls="navbarScroll" />
-
-        {/* links that collapse */}
-        <Navbar.Collapse className="justify-content-end" id="navbarScroll">
+      {/* media query BS hamburger navbarScroll is invisible here */}
+        
+        {/* connects toggle to #navbarScroll */}
+        {/* <Navbar.Toggle aria-controls="navbarScroll" /> */}
+        {/* menu that collapse */}
+        <Navbar.Collapse className="justify-content-end show" id="">
           <NavDropdown
             title="Your Profile"
             className="align-right"
@@ -68,4 +70,6 @@ function Navigation() {
   );
 }
 
+
+//! --> PRIVATE pages
 export default Navigation;

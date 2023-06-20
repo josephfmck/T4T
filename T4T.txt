@@ -433,3 +433,22 @@ Css applied,
         logout btn functionality,
         private/public rendering navbar 
          
+Navbar's title 
+    NavbarDropdown has a "title" prop that displays the content inside 
+
+Change the title prop using a component <NavTitle/>
+    <NavTitle/> will have the name/email of the user displayed 
+    Design IDEAS: 
+        circle with initials (like google)
+        Profile then a hamburger menu 
+    FOR NOW: 
+        display user's name only 
+        Media query edit the hamburger menu 
+
+PROBLEM: Media query hamburger opens NavDropdown then opens the menu 
+    Need to have hamburger only open the menu 
+
+Solution: Removed hamburger and just using dropdown 
+ remove toggle navbarScroll BS functionality 
+ set collapse always to show and removed .navbar-collapse default css 
+
