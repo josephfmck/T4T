@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 //*Routing
 import { Link, useNavigate } from "react-router-dom";
-
+//*Contexts
 //*Auth
 import { useAuth } from "../contexts/AuthContext";
 //*DB
 import { useDB } from "../contexts/DBContext";
+import { GlobalContext } from "../contexts/GlobalContext";
+
 //*images
 import t4tImg from "../assets/T4Twelcome.png";
 import logoImg from "../assets/logo.png";
@@ -20,7 +22,8 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-//*html
+//*components
+import Navigation from "../components/Navigation";
 
 function Lend() {
   //!STATE
@@ -31,20 +34,15 @@ function Lend() {
   const [toolPrice, setToolPrice] = useState(0);
   //!CONTEXT
   //*firebase Auth Context:
-  const { currentUser, logout } = useAuth();
+  const { currentUser } = useAuth();
   //*DB Context:
   const { toolsList, addTool } = useDB();
+  //*Global Context:
+  const { loginCheck, setLoginCheck } = useContext(GlobalContext);
   //!HOOKS
   const navigate = useNavigate();
 
   //!EVENTS
-  async function handleLogout() {
-    try {
-      await logout();
-    } catch {
-      setError("Failed to log out");
-    }
-  }
 
   async function onSubmit() {
     try {
@@ -70,33 +68,20 @@ function Lend() {
       <div id="bg-img">
         <img src={t4tImg} alt="t4tImg" />
       </div>
-      <header>
-        <img src={logoImg} className="logoheader" alt="logoheader" />
-        {currentUser ? (
-          <>
-            <Link to="/about" id="about" className="private">
-              <button>About Us</button>
-            </Link>
 
-            <Link to="/update-profile" id="update-profile" className="">
-              <button>Update Profile</button>
-            </Link>
-          </>
-        ) : (
+      {/* if logged in PRIVATE, else PUBLIC */}
+      {currentUser && loginCheck && loginCheck === true ? (
+        // !PRIVATE
+        <Navigation />
+      ) : (
+        // !PUBLIC
+        <header>
+          <img src={logoImg} className="logoheader" alt="logoheader" />
           <Link to="/about" id="about">
             <button className="">About Us</button>
           </Link>
-        )}
-
-        {/* if logged in display log out, else nothing */}
-        {currentUser ? (
-          <button variant="link" id="logout" onClick={handleLogout}>
-            Log Out
-          </button>
-        ) : (
-          <></>
-        )}
-      </header>
+        </header>
+      )}
 
       <Container className="bg-white mt-5 d-flex align-items-center justify-content-center flex-column">
         <Row>

@@ -452,3 +452,12 @@ Solution: Removed hamburger and just using dropdown
  remove toggle navbarScroll BS functionality 
  set collapse always to show and removed .navbar-collapse default css 
 
+Setup rent and lend page links 
+
+Rent and Lend page:
+    Use same navbar + css 
+        REMEMBER: 
+            "/" home's css will apply to other pages
+            since "/rent" also starts with "/" 
+    Make private routes 
+    

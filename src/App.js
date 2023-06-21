@@ -32,8 +32,12 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
-              <Route path="/rent" element={<Rent />} />
-              <Route path="/lend" element={<Lend />} />
+              <Route path="/rent" element={<PrivateRoute />}>
+                <Route path="/rent" element={<Rent />} />
+              </Route>
+              <Route path="/lend" element={<PrivateRoute />}>
+                <Route path="/lend" element={<Lend />} />
+              </Route>
             </Routes>
           </DBProvider>
         </AuthProvider>

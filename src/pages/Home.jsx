@@ -61,12 +61,17 @@ function Home() {
         <Row>
           <div className="top-content mt-5 mx-auto">
             {currentUser && loginCheck && loginCheck === true ? (
+              //! PRIVATE
               <>
-                <Button id="rentBtn">Rent Tools</Button>
-                <Button id="lendBtn">Lend Tools</Button>
-                <div>{currentUser.displayName}</div>
+                <Link to="/rent" className="">
+                  <Button id="rentBtn">Rent Tools</Button>
+                </Link>
+                <Link to="/lend" className="">
+                  <Button id="lendBtn">Lend Tools</Button>
+                </Link>
               </>
             ) : (
+              //! PUBLIC
               <>
                 <Link to="/signup" className="">
                   <Button>Sign Up</Button>

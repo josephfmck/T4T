@@ -1,23 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 //*Routing
 import { Link, useNavigate } from "react-router-dom";
-//*Auth
+//*Contexts
+//Auth
 import { useAuth } from "../contexts/AuthContext";
-//*DB
+//DB
 // import { useDB } from "../contexts/DBContext";
+import { GlobalContext } from "../contexts/GlobalContext";
+
 //*images
 import t4tImg from "../assets/T4Twelcome.png";
 import logoImg from "../assets/logo.png";
+
 //* CSS
 import "./rent.scss";
+
 //*bootstrap components
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+
 //*components
 import ToolList from "../components/ToolList";
+import Navigation from "../components/Navigation";
 
 
 function Rent() {
@@ -25,22 +32,15 @@ function Rent() {
   const [error, setError] = useState("");
   //!CONTEXT
   //*firebase Auth Context:
-  const { currentUser, logout } = useAuth();
-  // //*DB Context:
+  const { currentUser } = useAuth();
+  //*DB Context:
   // const { toolsList, getToolsList } = useDB();
+  //*Global Context:
+  const { loginCheck, setLoginCheck } = useContext(GlobalContext);
   //!HOOKS
   const navigate = useNavigate();
 
   //!EVENTS
-  async function handleLogout() {
-    setError("Log out failed");
-
-    try {
-      await logout();
-    } catch {
-      setError("Failed to log out");
-    }
-  }
 
   // async function handleToolsBtn() {
 
@@ -59,33 +59,21 @@ function Rent() {
       <div id="bg-img">
         <img src={t4tImg} alt="t4tImg" />
       </div>
-      <header>
-        <img src={logoImg} className="logoheader" alt="logoheader" />
-        {currentUser ? (
-          <>
-            <Link to="/about" id="about" className="private">
-              <button>About Us</button>
-            </Link>
 
-            <Link to="/update-profile" id="update-profile" className="">
-              <button>Update Profile</button>
-            </Link>
-          </>
-        ) : (
+      {/* if logged in PRIVATE, else PUBLIC */}
+      {currentUser && loginCheck && loginCheck === true ? (
+        // !PRIVATE
+        <Navigation />
+      ) : (
+        // !PUBLIC
+        <header>
+          <img src={logoImg} className="logoheader" alt="logoheader" />
           <Link to="/about" id="about">
             <button className="">About Us</button>
           </Link>
-        )}
+        </header>
+      )}
 
-        {/* if logged in display log out, else nothing */}
-        {currentUser ? (
-          <button variant="link" id="logout" onClick={handleLogout}>
-            Log Out
-          </button>
-        ) : (
-          <></>
-        )}
-      </header>
 
       <Container className="bg-white mt-5 d-flex align-items-center justify-content-center flex-column">
         <Row>
