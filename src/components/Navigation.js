@@ -53,11 +53,20 @@ function Navigation() {
             className="align-right"
             id="basic-navbar-nav"
           >
-              <Link to="/about" id="about" className="">
-                About Us
+              <Link to="/rent" id="" className="">
+                Rent Tools
+              </Link>
+              <Link to="/lend" id="" className="">
+                Lend Tools
+              </Link>
+              <Link to="/" id="" className="">
+                Your Tools
               </Link>
               <Link to="/update-profile" id="update-profile" className="">
                 Update Profile
+              </Link>
+              <Link to="/about" id="about" className="">
+                About Us
               </Link>
             <NavDropdown.Divider />
               <button id="logout" onClick={handleLogout}>
