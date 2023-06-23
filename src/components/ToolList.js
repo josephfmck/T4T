@@ -8,6 +8,8 @@ import { GlobalContext } from "../contexts/GlobalContext";
 //*CSS
 import { ListGroup, Card, Button } from "react-bootstrap";
 
+//*IMG
+import hammerIMG from "../assets/tools/photo-hammer.jfif";
 
 
 function ToolList() {
@@ -35,11 +37,13 @@ function ToolList() {
   return (
     <>
       <Card style={{ width: "18rem" }}>
-        {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+        <Card.Img variant="top" src={hammerIMG} />
         <Card.Body>
-          <Card.Title>Tool Name</Card.Title>
-          <Card.Text>Tool duration Tool price</Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <Card.Title>Hammer</Card.Title>
+          <Card.Text>
+            Weekly: $5.00
+          </Card.Text>
+          <Button variant="primary">Rent Tool</Button>
         </Card.Body>
       </Card>
       {toolsList.map((tool) => {
@@ -48,12 +52,9 @@ function ToolList() {
             <Card.Body>
               <Card.Title>{tool.name}</Card.Title>
               <Card.Text>
-                {tool.duration} {tool.price}
+                {tool.duration}: ${tool.price}.00
               </Card.Text>
-              <Card.Text>
-                {tool.duration} {tool.price}
-              </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
+              <Button variant="primary">Rent Tool</Button>
             </Card.Body>
           </Card>
         );

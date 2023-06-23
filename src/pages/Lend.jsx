@@ -28,10 +28,12 @@ import Navigation from "../components/Navigation";
 function Lend() {
   //!STATE
   const [error, setError] = useState("");
+  //*form state 
   //?move to DB context later 
   const [toolName, setToolName] = useState("");
   const [toolDuration, setToolDuration] = useState("");
   const [toolPrice, setToolPrice] = useState(0);
+  const [toolImg, setToolImg] = useState(null);
   //!CONTEXT
   //*firebase Auth Context:
   const { currentUser } = useAuth();
@@ -46,7 +48,8 @@ function Lend() {
 
   async function onSubmit() {
     try {
-      await addTool(toolName, toolDuration, toolPrice);
+      //state passed in
+      await addTool(toolName, toolDuration, toolPrice, toolImg);
     }
     catch {
       setError("Failed to submit tool");
@@ -85,7 +88,7 @@ function Lend() {
 
       <Container className="bg-white mt-5 d-flex align-items-center justify-content-center flex-column">
         <Row>
-            <h1 className="text-center my-5">Lend a Tool</h1>
+            <h1 className="text-center my-3">Lend a Tool</h1>
             <Form>
               <Form.Group className="mb-3" controlId="formToolName">
                 <Form.Label>Tools Name</Form.Label>
@@ -120,6 +123,14 @@ function Lend() {
                     setToolPrice(Number(e.target.value))
                   } 
                 />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formImage">
+                <Form.Label>Image</Form.Label>
+                <Form.Control 
+                  type="file" 
+                  onChange={(e) => 
+                    setToolImg(e.target.files[0])
+                  } />
               </Form.Group>
               <div className="mx-auto text-center">
               <Button 

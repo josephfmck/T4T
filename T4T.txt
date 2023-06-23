@@ -461,3 +461,30 @@ Rent and Lend page:
             since "/rent" also starts with "/" 
     Make private routes 
     
+A15 
+TODO: 
+    Lend page 
+        Lend tool form - have the tool connected to the authorized user 
+        Have img submission 
+    Rent Page 
+        setup html css for each tool 
+        Tool name 
+        Tool description
+        rent duration - rental period weekly 
+        price per duration - payment each week 
+        tool img 
+        tool's owner - auth user thats lending
+        rent btn
+
+<Rent/> -> <ToolList/> -> <ToolItem/> 
+
+images submission in <Lend/> form 
+
+Image upload 
+https://www.youtube.com/watch?v=YOAeBSCkArA 
+
+
+Firebase -
+firestore: stores the reference to the files 
+storage: stores the files  
+

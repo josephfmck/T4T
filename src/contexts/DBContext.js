@@ -27,14 +27,15 @@ export function DBProvider({ children }) {
 
     //!FIRESTORE DB METHODS
     //*Create
-    async function addTool(name, duration, price) {
+    async function addTool(name, duration, price, image) {
         //?id will be auto generated
         await addDoc(collectionRef, {
             name,
             duration,
-            price
+            price,
+            image
         });
-        setTool({ name, duration, price });
+        setTool({ name, duration, price, image });
     }
     //*Read 
     async function getToolsList() {
