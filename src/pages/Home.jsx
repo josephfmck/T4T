@@ -1,8 +1,8 @@
-import React, {useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 //*Routing
 import { Link, useNavigate } from "react-router-dom";
 
-//*Auth 
+//*Auth
 import { useAuth } from "../contexts/AuthContext";
 //*images
 import t4tImg from "../assets/T4Twelcome.png";
@@ -20,78 +20,66 @@ import Button from "react-bootstrap/Button";
 //*Global Context
 import { GlobalContext } from "../contexts/GlobalContext";
 
+//*Components
+import Navigation from "../components/Navigation";
 
 function Home() {
   //!STATE
   const [error, setError] = useState("");
   //!CONTEXT
   //*firebase Auth Context:
-  const { currentUser, logout } = useAuth();
+  const { currentUser } = useAuth();
   //*Global Context:
   const { loginCheck, setLoginCheck } = useContext(GlobalContext);
   //!HOOKS
   const navigate = useNavigate();
 
   //!EVENTS
-  async function handleLogout() {
-    try {
-      await logout();
-      setLoginCheck(false);
-    } catch {
-      setError("Failed to log out");
-    }
-  }
+
 
   return (
     <>
       <div id="bg-img">
         <img src={t4tImg} alt="t4tImg" />
       </div>
-      <header>
-        <img src={logoImg} className="logoheader" alt="logoheader" />
-        {currentUser && loginCheck && loginCheck === true ? (
-        <>
-          <Link to="/about" id="about" className="private">
-            <button>About Us</button>
-          </Link>
 
-          <Link to="/update-profile" id="update-profile" className="">
-            <button>Update Profile</button>
-          </Link>
-        </>
-        ) : (
+      {/* if logged in PRIVATE, else PUBLIC */}
+      {currentUser && loginCheck && loginCheck === true ? (
+        // !PRIVATE
+        <Navigation />
+      ) : (
+        // !PUBLIC
+        <header>
+          <img src={logoImg} className="logoheader" alt="logoheader" />
           <Link to="/about" id="about">
             <button className="">About Us</button>
           </Link>
-        )}
-
-        {/* if logged in display log out, else nothing */}
-        {currentUser && loginCheck && loginCheck === true ? (
-          <button variant="link" id="logout" onClick={handleLogout}>
-            Log Out
-          </button>
-        ) : (
-          <></>
-        )}
-      </header>
+        </header>
+      )}
 
       <Container>
         <Row>
           <div className="top-content mt-5 mx-auto">
             {currentUser && loginCheck && loginCheck === true ? (
-              <> 
-                <Button id="rentBtn">Rent Tools</Button>
-                <Button id="lendBtn">Lend Tools</Button>
+              //! PRIVATE
+              <>
+                <Link to="/rent" className="">
+                  <Button id="rentBtn">Rent Tools</Button>
+                </Link>
+                <Link to="/lend" className="">
+                  <Button id="lendBtn">Lend Tools</Button>
+                </Link>
               </>
             ) : (
+              //! PUBLIC
               <>
-            <Link to="/signup" className="">
-              <Button>Sign Up</Button>
-            </Link>
+                <Link to="/signup" className="">
+                  <Button>Sign Up</Button>
+                </Link>
 
-            <Link to="/login" className="">
-              <Button>Login</Button>
-            </Link>
+                <Link to="/login" className="">
+                  <Button>Login</Button>
+                </Link>
               </>
             )}
           </div>

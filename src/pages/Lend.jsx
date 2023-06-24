@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 //*Routing
 import { Link, useNavigate } from "react-router-dom";
-
+//*Contexts
 //*Auth
 import { useAuth } from "../contexts/AuthContext";
 //*DB
 import { useDB } from "../contexts/DBContext";
+import { GlobalContext } from "../contexts/GlobalContext";
+
 //*images
 import t4tImg from "../assets/T4Twelcome.png";
 import logoImg from "../assets/logo.png";
@@ -20,80 +22,83 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-//*html
+//*components
+import Navigation from "../components/Navigation";
 
 function Lend() {
   //!STATE
   const [error, setError] = useState("");
+  //*form state 
+  //?move to DB context later 
+  const [toolName, setToolName] = useState("");
+  const [toolDuration, setToolDuration] = useState("");
+  const [toolPrice, setToolPrice] = useState(0);
+  const [toolImg, setToolImg] = useState(null);
   //!CONTEXT
   //*firebase Auth Context:
-  const { currentUser, logout } = useAuth();
+  const { currentUser } = useAuth();
   //*DB Context:
-  const { toolsList, getToolsList } = useDB();
+  const { toolsList, addTool } = useDB();
+  //*Global Context:
+  const { loginCheck, setLoginCheck } = useContext(GlobalContext);
   //!HOOKS
   const navigate = useNavigate();
 
   //!EVENTS
-  async function handleLogout() {
-    setError("Log out failed");
 
+  async function onSubmit() {
     try {
-      await logout();
-    } catch {
-      setError("Failed to log out");
+      //state passed in
+      await addTool(toolName, toolDuration, toolPrice, toolImg);
+    }
+    catch {
+      setError("Failed to submit tool");
     }
   }
 
-  async function handleToolsBtn() {
+  // async function handleSubmit() {
 
-    try {
-      //reads and returns toolsList state from DB 
-      await getToolsList();
-    } catch {
-      setError("Failed to get Tools List");
-    }
-  }
+  //   try {
+  //     //submit form tool to DB
+  //     await getToolsList();
+  //   } catch {
+  //     setError("Failed to submit tool");
+  //   }
+  // }
 
   return (
     <>
       <div id="bg-img">
         <img src={t4tImg} alt="t4tImg" />
       </div>
-      <header>
-        <img src={logoImg} className="logoheader" alt="logoheader" />
-        {currentUser ? (
-          <>
-            <Link to="/about" id="about" className="private">
-              <button>About Us</button>
-            </Link>
 
-            <Link to="/update-profile" id="update-profile" className="">
-              <button>Update Profile</button>
-            </Link>
-          </>
-        ) : (
+      {/* if logged in PRIVATE, else PUBLIC */}
+      {currentUser && loginCheck && loginCheck === true ? (
+        // !PRIVATE
+        <Navigation />
+      ) : (
+        // !PUBLIC
+        <header>
+          <img src={logoImg} className="logoheader" alt="logoheader" />
           <Link to="/about" id="about">
             <button className="">About Us</button>
           </Link>
-        )}
-
-        {/* if logged in display log out, else nothing */}
-        {currentUser ? (
-          <button variant="link" id="logout" onClick={handleLogout}>
-            Log Out
-          </button>
-        ) : (
-          <></>
-        )}
-      </header>
+        </header>
+      )}
 
       <Container className="bg-white mt-5 d-flex align-items-center justify-content-center flex-column">
         <Row>
-            <h1 className="text-center my-5">Lend a Tool</h1>
+            <h1 className="text-center my-3">Lend a Tool</h1>
             <Form>
               <Form.Group className="mb-3" controlId="formToolName">
                 <Form.Label>Tools Name</Form.Label>
-                <Form.Control type="text" placeholder="Enter tools name" />
+                <Form.Control 
+                  type="text" 
+                  placeholder="Enter tools name" 
+                  onChange={(e) => 
+                    setToolName(e.target.value)
+                  }
+                />
                 {/* <Form.Text className="text-muted">
                   We'll never share your email with anyone else.
                 </Form.Text> */}
@@ -101,20 +106,42 @@ function Lend() {
 
               <Form.Group className="mb-3" controlId="formDuration">
                 <Form.Label>Duration of Rental</Form.Label>
-                <Form.Control type="text" placeholder="Weekly/BiWeekly/Monthly" />
+                <Form.Control 
+                  type="text" 
+                  placeholder="Weekly/BiWeekly/Monthly"
+                  onChange={(e) => 
+                    setToolDuration(e.target.value)
+                  }
+                />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formPrice">
                 <Form.Label>Price</Form.Label>
-                <Form.Control type="text" placeholder="$5.00" />
+                <Form.Control 
+                  type="number" 
+                  placeholder={5}
+                  onChange={(e) => 
+                    setToolPrice(Number(e.target.value))
+                  } 
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formImage">
+                <Form.Label>Image</Form.Label>
+                <Form.Control 
+                  type="file" 
+                  onChange={(e) => 
+                    setToolImg(e.target.files[0])
+                  } />
               </Form.Group>
               <div className="mx-auto text-center">
-              <Button type="submit">
-                Submit
+              <Button 
+                type="submit"
+                onClick={onSubmit}
+              >
+                Submit Tool for Rental
               </Button>
               </div>
             </Form>
         </Row>
-        <Button id="toolsListBtn" onClick={handleToolsBtn}>Get tools List from DB</Button>
       </Container>
       <footer>
         <div className="push">
