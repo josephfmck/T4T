@@ -488,3 +488,7 @@ Firebase -
 firestore: stores the reference to the files 
 storage: stores the files  
 
+setup storage 
+setup config file 
+
+
