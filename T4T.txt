@@ -492,3 +492,24 @@ setup storage
 setup config file 
 
 
+Storage Context 
+to use storage methods in other components
+
+DONE LATER 
+
+Lend page - 
+    image upload to storage - 
+        make reference to it with storage method 
+        ref will have the image name + a random string to make each image unique
+    install UUID 
+        npm i uuid
+        import uuidv4 from uuid
+        uuidv4() - generates a random string
+    upload image to storage
+        uploadBytes method 
+        sends promise so .then() a success alert
+NOW Image uploaded to firebase storage 
+
+IN firebase 
+    storage img/
+        each img has a public url to access it 

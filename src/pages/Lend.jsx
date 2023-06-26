@@ -25,6 +25,12 @@ import Form from "react-bootstrap/Form";
 //*components
 import Navigation from "../components/Navigation";
 
+
+//!IMAGE UPLOAD TO BE MOVED TO CONTEXT LATER 
+import { storage } from "../firebase/config";
+import { ref, uploadBytes } from "firebase/storage";
+import { v4 } from 'uuid';
+
 function Lend() {
   //!STATE
   const [error, setError] = useState("");
@@ -41,13 +47,26 @@ function Lend() {
   const { toolsList, addTool } = useDB();
   //*Global Context:
   const { loginCheck, setLoginCheck } = useContext(GlobalContext);
-  //!HOOKS
-  const navigate = useNavigate();
+
 
   //!EVENTS
 
-  async function onSubmit() {
+  async function onSubmit(e) {
+    e.preventDefault();
     try {
+
+      //!UPLOAD IMAGE TO FIREBASE STORAGE
+      if (toolImg == null) {
+        return;
+      } else {
+        //* reference to img sending to storage, added with random string to avoid overwriting
+        const storageRef = ref(storage, `images/${toolImg.name + v4()}`);
+        //upload image to firebase: ref, img uploading
+        uploadBytes(storageRef, toolImg).then(() => {
+          alert("Image uploaded successfully");
+        });
+      }
+      
       //state passed in
       await addTool(toolName, toolDuration, toolPrice, toolImg);
     }
@@ -128,8 +147,10 @@ function Lend() {
                 <Form.Label>Image</Form.Label>
                 <Form.Control 
                   type="file" 
-                  onChange={(e) => 
+                  onChange={(e) => {
+                    console.log(e.target.files[0])
                     setToolImg(e.target.files[0])
+                    }
                   } />
               </Form.Group>
               <div className="mx-auto text-center">
