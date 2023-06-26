@@ -510,6 +510,11 @@ Lend page -
         sends promise so .then() a success alert
 NOW Image uploaded to firebase storage 
 
+Accessing imgs from storage to place on webpage 
+
 IN firebase 
     storage img/
         each img has a public url to access it 
+
+Lend page submits the image 
+Rent page renders the image 

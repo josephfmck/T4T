@@ -25,6 +25,7 @@ function ToolList() {
   //!STATE
   const [error, setError] = useState("");
   const [loginLoading, setLoginLoading] = useState(false);
+  // const [imagesList, setImagesList] = useState([]);
 
   // Run getToolsList when the component mounts
   //!Empty [] PREVENTS FROM RUNNING INFINITELY

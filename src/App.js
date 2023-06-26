@@ -11,6 +11,8 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { GlobalContextProvider } from "./contexts/GlobalContext";
 //*DB
 import { DBProvider } from "./contexts/DBContext";
+//*Storage
+import { StorageProvider } from "./contexts/StorageContext";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import ForgotPassword from "./components/ForgotPassword";
@@ -23,22 +25,24 @@ function App() {
       <GlobalContextProvider>
         <AuthProvider>
           <DBProvider>
-            <Routes>
-              <Route path="/update-profile" element={<PrivateRoute />}>
-                <Route path="/update-profile" element={<UpdateProfile />} />
-              </Route>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/forgot-password" element={<ForgotPassword />} />
-              <Route path="/rent" element={<PrivateRoute />}>
-                <Route path="/rent" element={<Rent />} />
-              </Route>
-              <Route path="/lend" element={<PrivateRoute />}>
-                <Route path="/lend" element={<Lend />} />
-              </Route>
-            </Routes>
+            <StorageProvider>
+              <Routes>
+                <Route path="/update-profile" element={<PrivateRoute />}>
+                  <Route path="/update-profile" element={<UpdateProfile />} />
+                </Route>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
+                <Route path="/rent" element={<PrivateRoute />}>
+                  <Route path="/rent" element={<Rent />} />
+                </Route>
+                <Route path="/lend" element={<PrivateRoute />}>
+                  <Route path="/lend" element={<Lend />} />
+                </Route>
+              </Routes>
+            </StorageProvider>
           </DBProvider>
         </AuthProvider>
       </GlobalContextProvider>

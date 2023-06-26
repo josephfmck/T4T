@@ -6,6 +6,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 //*DB
 import { useDB } from "../contexts/DBContext";
+//*Storage
+import { useStorage } from "../contexts/StorageContext";
+//*Global
 import { GlobalContext } from "../contexts/GlobalContext";
 
 //*images
@@ -26,11 +29,6 @@ import Form from "react-bootstrap/Form";
 import Navigation from "../components/Navigation";
 
 
-//!IMAGE UPLOAD TO BE MOVED TO CONTEXT LATER 
-import { storage } from "../firebase/config";
-import { ref, uploadBytes } from "firebase/storage";
-import { v4 } from 'uuid';
-
 function Lend() {
   //!STATE
   const [error, setError] = useState("");
@@ -45,8 +43,11 @@ function Lend() {
   const { currentUser } = useAuth();
   //*DB Context:
   const { toolsList, addTool } = useDB();
+  //*Storgage Context:
+  const { uploadImage } = useStorage();
   //*Global Context:
   const { loginCheck, setLoginCheck } = useContext(GlobalContext);
+  
 
 
   //!EVENTS
@@ -59,12 +60,8 @@ function Lend() {
       if (toolImg == null) {
         return;
       } else {
-        //* reference to img sending to storage, added with random string to avoid overwriting
-        const storageRef = ref(storage, `images/${toolImg.name + v4()}`);
         //upload image to firebase: ref, img uploading
-        uploadBytes(storageRef, toolImg).then(() => {
-          alert("Image uploaded successfully");
-        });
+        await uploadImage(toolImg);
       }
       
       //state passed in
