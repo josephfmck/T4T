@@ -3,7 +3,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { storage } from "../firebase/config";
 //*Storage Methods
 //ref is reference to the storage location/bucket
-import { ref, uploadBytes } from "firebase/storage";
+import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
 //*random generator
 import { v4 } from "uuid";
 
@@ -17,6 +17,7 @@ export function useStorage() {
 export function StorageProvider({ children }) {
     //!STATE
     // const [toolImg, setToolImg] = useState(null);
+    const [imagesList, setImagesList] = useState([]);
     //!REFS 
 
     //!STORAGE METHODS
@@ -35,9 +36,31 @@ export function StorageProvider({ children }) {
       });
     }
 
+    //*grabs all images from Storage
+    async function getAllImages() {
+      //ref to all images in folder
+      const imageListRef = ref(storage, "images");
+      listAll(imageListRef).then(
+        (res) => {
+          console.log("res", res);
+          //clear imagesList state
+          setImagesList([]);
+          //grab each image download URL
+          res.items.forEach((itemRef) => {
+            getDownloadURL(itemRef).then((url) => {
+              //?grab current list state and url to the end
+              setImagesList((prev) => [...prev, url]);
+            });
+          });
+        }
+      );
+    }
+
     //!STATE PASSED TO COMPONENTS
       const storageState = {
-        uploadImage
+        uploadImage,
+        getAllImages,
+        imagesList,
     };
 
   //!RENDER

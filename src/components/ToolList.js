@@ -5,6 +5,8 @@ import { useDB } from "../contexts/DBContext";
 import { Link, useNavigate } from "react-router-dom";
 //*Global context
 import { GlobalContext } from "../contexts/GlobalContext";
+//*Storage Context 
+import { useStorage } from "../contexts/StorageContext";
 //*CSS
 import { ListGroup, Card, Button } from "react-bootstrap";
 
@@ -19,6 +21,8 @@ function ToolList() {
   const { login, currentUser } = useAuth();
   //*DB Context
   const { toolsList, getToolsList } = useDB();
+  //*Storage Context 
+  const { getAllImages, imagesList } = useStorage();
   //*global context
   const { loginCheck, setLoginCheck } = useContext(GlobalContext);
 
@@ -30,6 +34,11 @@ function ToolList() {
   // Run getToolsList when the component mounts
   //!Empty [] PREVENTS FROM RUNNING INFINITELY
   useEffect(() => {
+    //callback prevents running twice 
+    const fetchImages = async () => {
+      await getAllImages();
+    };
+    fetchImages();
     getToolsList();
   }, []);
 
@@ -60,8 +69,13 @@ function ToolList() {
           </Card>
         );
       })}
-      ;
-      {/* <Button id="toolsListBtn" onClick={handleToolsBtn}>Get tools List from DB</Button> */}
+      {imagesList.map((url) => {
+        return (
+          <Card style={{ width: "18rem" }} key={url}>
+            <Card.Img variant="top" src={url} />
+          </Card>
+        );
+      })}
     </>
   );
 }

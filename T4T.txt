@@ -518,3 +518,24 @@ IN firebase
 
 Lend page submits the image 
 Rent page renders the image 
+
+
+Grabbing the images to display on rent page -
+
+setup listAll firebase storage method 
+returns all images in the storage images/ 
+on page load 
+
+IN StorageContext - 
+    2 references - 
+        ref for unique image submitted 
+        ref for all images in /images to grab 
+
+listAll - returns the images/ in storage 
+then loop through the list 
+grab the img url from each and set the state 
+
+In <ToolList/> - 
+    grab the state and render it out on to page 
+
+NOW displaying images on <ToolList/>
