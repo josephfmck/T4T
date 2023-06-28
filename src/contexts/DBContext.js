@@ -44,7 +44,7 @@ export function DBProvider({ children }) {
         const data = await getDocs(collectionRef);
         const filteredData = data.docs.map((doc) => ({
             ...doc.data(),
-            id: doc.id
+            id: doc.id,
         }));
         setToolsList(filteredData);
         setDBLoading(false);

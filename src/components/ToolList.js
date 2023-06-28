@@ -37,9 +37,9 @@ function ToolList() {
     //callback prevents running twice 
     const fetchImages = async () => {
       await getAllImages();
+      getToolsList();
     };
     fetchImages();
-    getToolsList();
   }, []);
 
   
@@ -59,6 +59,7 @@ function ToolList() {
       {toolsList.map((tool) => {
         return (
           <Card style={{ width: "18rem" }} key={tool.id}>
+            <Card.Img variant="top" src={tool.image} />
             <Card.Body>
               <Card.Title>{tool.name}</Card.Title>
               <Card.Text>
@@ -69,13 +70,13 @@ function ToolList() {
           </Card>
         );
       })}
-      {imagesList.map((url) => {
+      {/* {imagesList.map((url) => {
         return (
           <Card style={{ width: "18rem" }} key={url}>
             <Card.Img variant="top" src={url} />
           </Card>
         );
-      })}
+      })} */}
     </>
   );
 }

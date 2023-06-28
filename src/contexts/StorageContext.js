@@ -16,8 +16,11 @@ export function useStorage() {
 
 export function StorageProvider({ children }) {
     //!STATE
-    // const [toolImg, setToolImg] = useState(null);
     const [imagesList, setImagesList] = useState([]);
+    //url of image that was uploaded 
+    const [uploadedImageUrl, setUploadedImageUrl] = useState(null); 
+
+    
     //!REFS 
 
     //!STORAGE METHODS
@@ -30,11 +33,56 @@ export function StorageProvider({ children }) {
       //?will go to images folder in storage (may need to specify user later)
       const storageRef = ref(storage, `images/${image.name + v4()}`);
     
-      //executes upload
-      uploadBytes(storageRef, image).then(() => {
+      //!NEW 
+      await uploadBytes(storageRef, image);
+  
+      try {
+        const url = await getDownloadURL(storageRef);
+        setUploadedImageUrl(url);
+        console.log("imageURL", url);
         alert("Image uploaded successfully");
-      });
+      } catch (error) {
+        console.log("Error getting image download URL:", error);
+      }
+
+
+
+
+
+
+
+
+
+
+
+      //!ORIGINAL
+      // //executes upload
+      // uploadBytes(storageRef, image).then(() => {
+      //   alert("Image uploaded successfully");
+
+      //   //!Get the uploaded image URL
+      //   //ref to all images in folder
+      //   const imageListRef = ref(storage, "images");
+        
+      //   //*Pull entire list 
+      //   listAll(imageListRef).then(
+      //     (res) => {
+      //       console.log("res", res);
+      //       //!grab the current image download - one we just uploaded
+      //       const itemRef = res.items[0];
+
+      //       //*grab the download URL
+      //       getDownloadURL(itemRef).then((url) => {
+      //         console.log("imageURL", url);
+      //         if(url !== null) {
+      //           setUploadedImageUrl(url);
+      //         }
+      //       });
+      //     }
+      //   );
+      // });
     }
+
 
     //*grabs all images from Storage
     async function getAllImages() {
@@ -61,6 +109,7 @@ export function StorageProvider({ children }) {
         uploadImage,
         getAllImages,
         imagesList,
+        uploadedImageUrl
     };
 
   //!RENDER

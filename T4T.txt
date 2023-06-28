@@ -543,3 +543,35 @@ NOW displaying images on <ToolList/>
 
 A16 Have image urls connect to the Correct tools 
 
+PROBLEM: 
+state of toolsList and state of imagesList 
+Need to connect correct image to the correct tool 
+Needs an association between them on tool submission
+
+SOLUTION: 
+during lend tool onSubmit 
+DBContext - addTool need to set value of image property to the image url 
+set toolsList state of toolImg
+
+How this works - 
+submit toolImg state - file of image 
+uploadImage()
+    sends file to firebase storage
+    then grabs the images url from storage 
+    sets the state of uploadedImageUrl 
+addTool() 
+    grabs the now updated uploadedImageUrl from storage 
+    and submits the tool img url to the DB 
+
+
+ISSUE: 
+    need to find correct url for image
+
+
+HAVE: toolImg =  https://firebasestorage.googleapis.com/v0/b/t4t-dev-dfe40.appspot.com/o/images%2Fphoto-screwdriver.webpd37d1f44-ca86-4004-a9e4-95c58bf57027?alt=media&token=2bb05a38-1530-4346-930d-5e281a7ba650
+to 
+NEED: toolImg = https://firebasestorage.googleapis.com/v0/b/t4t-dev-dfe40.appspot.com/o/images%2Fphoto-screwdriver.webpfc45f4bb-6cbf-4768-a54e-50e56fe3b62a?alt=media&token=7cb3a90b-f8eb-4d8f-84c4-e25c8851cf64 
+
+is a token issue and need to use listAll or a equivalent method to grab 
+
+
