@@ -55,31 +55,21 @@ function Lend() {
   async function onSubmit(e) {
     e.preventDefault();
     try {
-
       //!UPLOAD IMAGE TO FIREBASE STORAGE (is required in this case)
       if (toolImg == null) {
         return;
       } else {
         //upload image to firebase: ref, img uploading
-        await uploadImage(toolImg);
-
-        //*wait for uploadedImageUrl to not be null
-        let retryCount = 0;
-        const maxRetries = 5;
-        const retryInterval = 1000; //every second
-        // Loop until uploadedImageUrl is not null or max number of retries reached
-        while (uploadedImageUrl === null && retryCount < maxRetries) {
-          await new Promise(resolve => setTimeout(resolve, retryInterval));
-          retryCount++;
-        }
-
-        //*check url not null then add to DB
-        if(uploadedImageUrl !== null) {
-          //?uploadedImageUrl is passed in AFTER uploadImage()
-          addTool(toolName, toolDuration, toolPrice, uploadedImageUrl);
-        } else {
-          console.log("uploadedImageUrl is null");
-        }
+        await uploadImage(toolImg).then(() => {
+          //*check url not null then add to DB
+          if(uploadedImageUrl !== null) {
+            //?uploadedImageUrl is passed in AFTER uploadImage()
+            addTool(toolName, toolDuration, toolPrice, uploadedImageUrl);
+            console.log("uploadedImageUrl", uploadedImageUrl)
+          } else {
+            console.log("uploadedImageUrl is null");
+          }
+        });
       }
     }
     catch {

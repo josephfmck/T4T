@@ -575,3 +575,9 @@ NEED: toolImg = https://firebasestorage.googleapis.com/v0/b/t4t-dev-dfe40.appspo
 is a token issue and need to use listAll or a equivalent method to grab 
 
 
+A17a
+
+Storage upload of image X 
+uploadedImageUrl is null.  PROBLEM
+
+In storage context - chain after the upload completes
