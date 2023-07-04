@@ -34,43 +34,22 @@ export function StorageProvider({ children }) {
       const storageRef = ref(storage, `images/${image.name + v4()}`);
     
       //!CHAIN IT AFTER UPLOAD FINISHES
-      await uploadBytes(storageRef, image).then(async () => {
-
-        //ref to all images in folder
-        const imageListRef = ref(storage, "images");
-        
-        //*Pull entire list 
-        listAll(imageListRef).then(
-          (res) => {
-            console.log("res", res);
-            //!grab the current image download - one we just uploaded
-            const itemRef = res.items[0];
-        
-            //*grab the download URL
-            getDownloadURL(itemRef).then((url) => {
-              console.log("imageURL", url);
-              if(url !== null) {
-                setUploadedImageUrl(url);
-                console.log("imageURL", url);
-                alert("Image uploaded successfully");
-              }
-            });
-          }
-        );
-      }).catch((error) => {
-        console.log("Error getting image download URL:", error);
-      });
+      const foo = await uploadBytes(storageRef, image);
+      const itemRef = foo.ref;
+      console.log(`initial url: ${foo.metadata.url}`);
   
+      //*grab the download URL
+      const url = await getDownloadURL(itemRef);
+      console.log(`subsequent url: ${url}`);
+      if(!url){
+        console.error(`No url`);
+      }
 
+      setUploadedImageUrl(url);
+      console.log("imageURL", url);
+      alert("Image uploaded successfully");
 
-
-
-
-
-
-
-
-
+      return url;
 
       //!ORIGINAL
       // //executes upload

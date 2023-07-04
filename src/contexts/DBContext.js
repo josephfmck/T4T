@@ -20,7 +20,6 @@ export function DBProvider({ children }) {
     const [tool, setTool] = useState({});
     const [DBloading, setDBLoading] = useState(true);
 
-
     //!REFS
         //? db, "key" - name of collection in firebase
     const collectionRef = collection(db, "tools");

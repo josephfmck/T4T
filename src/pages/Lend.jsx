@@ -49,27 +49,26 @@ function Lend() {
   const { loginCheck, setLoginCheck } = useContext(GlobalContext);
   
 
-
   //!EVENTS
 
   async function onSubmit(e) {
     e.preventDefault();
     try {
       //!UPLOAD IMAGE TO FIREBASE STORAGE (is required in this case)
-      if (toolImg == null) {
+      if (!toolImg) {
         return;
       } else {
-        //upload image to firebase: ref, img uploading
-        await uploadImage(toolImg).then(() => {
-          //*check url not null then add to DB
-          if(uploadedImageUrl !== null) {
-            //?uploadedImageUrl is passed in AFTER uploadImage()
-            addTool(toolName, toolDuration, toolPrice, uploadedImageUrl);
-            console.log("uploadedImageUrl", uploadedImageUrl)
-          } else {
-            console.log("uploadedImageUrl is null");
-          }
-        });
+
+        const imageUrl2 = await uploadImage(toolImg);
+
+        //*check url not null then add to DB
+        if(imageUrl2) {
+          //?uploadedImageUrl is passed in AFTER uploadImage()
+          await addTool(toolName, toolDuration, toolPrice, imageUrl2);
+          console.log("uploadedImageUrl", imageUrl2)
+        } else {
+          console.log("uploadedImageUrl is null");
+        }
       }
     }
     catch {
