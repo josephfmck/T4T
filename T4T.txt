@@ -592,3 +592,13 @@ COMPLETE -
 
 A18 
 
+ToolList - css updated for rent page tool List 
+added user owner 
+
+TODO: 
+
+Set owner of tool 
+Submission will have a field with the currentUser obj's displayName 
+    submit 
+        automatically adds the username field to the tool submission 
+        to DB - addTool will have parameter of username

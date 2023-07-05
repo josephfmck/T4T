@@ -80,8 +80,8 @@ function Rent() {
         <Row>
             <h1 className="text-center my-5">Rent a Tool</h1>
         </Row>
+        
         <ToolList />
-        {/* <Button id="toolsListBtn" onClick={handleToolsBtn}>Get tools List from DB</Button> */}
       </Container>
       <footer>
         <div className="push">
