@@ -581,3 +581,14 @@ Storage upload of image X
 uploadedImageUrl is null.  PROBLEM
 
 In storage context - chain after the upload completes
+
+
+COMPLETE - 
+    upload image to storage 
+    grab image url from storage 
+    submit image url to DB 
+    grab image url from DB 
+    display image on rent page
+
+A18 
+
