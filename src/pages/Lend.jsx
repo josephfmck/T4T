@@ -64,7 +64,7 @@ function Lend() {
         //*check url not null then add to DB
         if(imageUrl2) {
           //?uploadedImageUrl is passed in AFTER uploadImage()
-          await addTool(toolName, toolDuration, toolPrice, imageUrl2);
+          await addTool(toolName, toolDuration, toolPrice, imageUrl2, currentUser.displayName, currentUser.email, currentUser.uid);
           console.log("uploadedImageUrl", imageUrl2)
         } else {
           console.log("uploadedImageUrl is null");
@@ -73,18 +73,10 @@ function Lend() {
     }
     catch {
       setError("Failed to submit tool");
+      alert("Err: failed to submit tool");
     }
   }
 
-  // async function handleSubmit() {
-
-  //   try {
-  //     //submit form tool to DB
-  //     await getToolsList();
-  //   } catch {
-  //     setError("Failed to submit tool");
-  //   }
-  // }
 
   return (
     <>

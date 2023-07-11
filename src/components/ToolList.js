@@ -49,14 +49,15 @@ function ToolList() {
 
   return (
     <div className="toolList-Container">
-      {console.log(currentUser)}
 
-      <Row xs={1} md={3} className="g-4">
+      <Row xs={1} md={2} lg={3} className="g-4">
         {toolsList.map((tool) => {
           return (
             <Col>
-              <Card style={{ width: "18rem" }} key={tool.id}>
-                <Card.Img variant="top" src={tool.image} />
+              <Card className="mx-auto" key={tool.id}>
+                <Card.Img 
+                  variant="top" 
+                  src={tool.image} />
                 <Card.Body>
                   <Card.Title>{tool.name}</Card.Title>
 
@@ -69,7 +70,7 @@ function ToolList() {
                       <Button variant="primary">Rent Tool</Button>
                     </Col>
                     <Col>
-                      <Card.Text>Owner: {currentUser.displayName}</Card.Text>
+                      <Card.Text>Owner: {tool.userName}</Card.Text>
                     </Col>
                   </Row>
                 </Card.Body>

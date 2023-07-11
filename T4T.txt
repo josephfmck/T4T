@@ -602,3 +602,35 @@ Submission will have a field with the currentUser obj's displayName
     submit 
         automatically adds the username field to the tool submission 
         to DB - addTool will have parameter of username
+
+
+
+PLAN: 
+    add currentUser obj to the addTool submission 
+        DB will have currentUser obj (or just email)
+    when displaying, will display owner as their username 
+        currentUser.displayName 
+
+IN <Lend/> 
+    addTool(currentUser) - currentUser as param 
+
+IN <DBContext/> 
+    update addTool method to include currentUser 
+
+
+
+ISSUES: when submitting the currentUser obj 
+    currentUser obj we get from Auth is considered JSON obj 
+    firestore DB only has field for strings 
+    JSON.stringify works to submit as field 
+        BUT when getting the string back 
+        parsing the string back into JSON is troublesome 
+
+BANDAID SOLUTION: extract from currentUser strings 
+    strings/data to extract from currentUser 
+        displayName,
+        email,
+        uid X 
+
+DONE: added unique user label to each tool
+css styling 
