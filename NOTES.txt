@@ -1,0 +1,13 @@
+https://www.youtube.com/watch?v=nAgOUzr7LHk
+
+build first: 
+npm run build
+
+deploy steps: 
+
+firebase login
+firebase init - goes into the settings and allows more firebase commands
+firebase deploy - set up hosting
+firebase deploy - again to complete it and get url
+
+https://t4t-dev-dfe40.web.app/
